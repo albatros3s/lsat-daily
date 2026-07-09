@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0b0f19" />
+<title>LSAT Daily</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<style>
+  :root{
+    --bg:#0b0f19; --panel:#151b2b; --panel2:#1c2438; --line:#28324b;
+    --text:#e8ecf5; --muted:#95a1bd; --accent:#5b8cff; --accent2:#7aa2ff;
+    --good:#2fbf71; --bad:#e5544b; --warn:#e0a030; --chip:#22304d;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  html,body{margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px; line-height:1.5}
+  body{max-width:760px; margin:0 auto; padding:0 16px calc(96px + env(safe-area-inset-bottom))}
+  h1,h2,h3{line-height:1.25}
+  a{color:var(--accent2)}
+  header.top{position:sticky; top:0; z-index:5; background:linear-gradient(var(--bg),var(--bg) 70%,transparent);
+    padding:14px 0 8px; display:flex; align-items:center; justify-content:space-between}
+  .brand{font-weight:700; font-size:1.15rem; letter-spacing:.2px}
+  .brand small{color:var(--muted); font-weight:500; font-size:.8rem; display:block}
+  .iconbtn{background:var(--panel); border:1px solid var(--line); color:var(--text);
+    border-radius:10px; padding:8px 10px; font-size:.9rem; cursor:pointer}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:16px; margin:12px 0}
+  .muted{color:var(--muted)}
+  .row{display:flex; gap:10px; flex-wrap:wrap}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .stat{background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:12px}
+  .stat .n{font-size:1.6rem; font-weight:700}
+  .stat .l{color:var(--muted); font-size:.82rem}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--accent); color:#0a1020; border:none; border-radius:12px;
+    padding:14px 18px; font-size:1rem; font-weight:650; cursor:pointer; width:100%}
+  .btn.secondary{background:var(--panel2); color:var(--text); border:1px solid var(--line)}
+  .btn:disabled{opacity:.45; cursor:not-allowed}
+  .btn.small{width:auto; padding:10px 14px; font-size:.9rem}
+  input,textarea,select{width:100%; background:var(--panel2); color:var(--text);
+    border:1px solid var(--line); border-radius:10px; padding:12px; font-size:1rem; font-family:inherit}
+  textarea{resize:vertical; min-height:80px}
+  label.fld{display:block; margin:12px 0 6px; color:var(--muted); font-size:.85rem}
+  .pill{display:inline-block; background:var(--chip); border:1px solid var(--line);
+    color:var(--accent2); border-radius:999px; padding:3px 10px; font-size:.75rem; font-weight:600}
+  .hidden{display:none !important}
+
+  /* Question */
+  .qmeta{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:10px}
+  .stim{background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:14px; white-space:pre-wrap}
+  .prompt{font-weight:650; margin:14px 0 10px}
+  .choice{display:flex; gap:12px; align-items:flex-start; background:var(--panel2);
+    border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin:8px 0; cursor:pointer;
+    transition:border-color .12s, background .12s}
+  .choice:hover{border-color:var(--accent)}
+  .choice.sel{border-color:var(--accent); background:#18223c}
+  .choice .lt{font-weight:700; color:var(--accent2); min-width:18px}
+  .choice.correct{border-color:var(--good); background:rgba(47,191,113,.12)}
+  .choice.wrong{border-color:var(--bad); background:rgba(229,84,75,.12)}
+  .choice.disabled{cursor:default}
+  .verdict{font-weight:700; margin:14px 0 6px; font-size:1.05rem}
+  .verdict.ok{color:var(--good)} .verdict.no{color:var(--bad)}
+  .explain{background:var(--panel2); border:1px solid var(--line); border-left:3px solid var(--accent);
+    border-radius:10px; padding:12px 14px; margin:10px 0}
+  .traps h4{margin:14px 0 6px; color:var(--muted); font-size:.85rem; text-transform:uppercase; letter-spacing:.5px}
+  .trap{border:1px solid var(--line); border-left:3px solid var(--bad); border-radius:10px;
+    padding:10px 12px; margin:8px 0; background:rgba(229,84,75,.06)}
+  .trap b{color:var(--bad)}
+  .takeaway{border:1px solid var(--line); border-left:3px solid var(--warn); border-radius:10px;
+    padding:12px 14px; margin:12px 0; background:rgba(224,160,48,.08)}
+  .takeaway b{color:var(--warn)}
+  .progressbar{height:6px; background:var(--panel2); border-radius:99px; overflow:hidden; margin:6px 0 14px}
+  .progressbar > i{display:block; height:100%; background:var(--accent); width:0%}
+  .passage{max-height:230px; overflow:auto; white-space:pre-wrap}
+  details.passwrap summary{cursor:pointer; font-weight:650; padding:6px 0}
+  table.acc{width:100%; border-collapse:collapse}
+  table.acc td{padding:8px 6px; border-bottom:1px solid var(--line); font-size:.92rem}
+  table.acc td:last-child{text-align:right; font-variant-numeric:tabular-nums}
+  .bar{height:8px; background:var(--panel2); border-radius:99px; overflow:hidden; margin-top:4px}
+  .bar > i{display:block; height:100%}
+  .toast{position:fixed; left:50%; transform:translateX(-50%); bottom:calc(20px + env(safe-area-inset-bottom));
+    background:var(--panel2); border:1px solid var(--line); color:var(--text); padding:12px 16px;
+    border-radius:12px; z-index:20; max-width:90%; box-shadow:0 8px 30px rgba(0,0,0,.4); font-size:.9rem}
+  footer.help{color:var(--muted); font-size:.8rem; margin:24px 0; text-align:center}
+  .sync{font-size:.8rem; color:var(--muted)}
+  .dot{display:inline-block; width:8px; height:8px; border-radius:99px; margin-right:6px; vertical-align:middle}
+  .dot.on{background:var(--good)} .dot.off{background:var(--muted)} .dot.err{background:var(--bad)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">LSAT&nbsp;Daily <small>Target 170+ &middot; mixed, difficulty 4&ndash;5</small></div>
+  <button class="iconbtn" id="navSettings">⚙︎</button>
+</header>
+
+<!-- SETUP -->
+<section id="view-setup" class="hidden">
+  <div class="card">
+    <h2>Connect to GitHub</h2>
+    <p class="muted">Your progress is saved to a file in your own GitHub repo, so it syncs across every device. Enter this once; it stays on this phone only.</p>
+    <label class="fld">GitHub username (owner)</label>
+    <input id="in-owner" placeholder="e.g. jinsankim" autocapitalize="off" autocorrect="off" />
+    <label class="fld">Repository name</label>
+    <input id="in-repo" placeholder="e.g. lsat-daily" autocapitalize="off" autocorrect="off" />
+    <label class="fld">Fine-grained personal access token</label>
+    <input id="in-token" type="password" placeholder="github_pat_..." autocapitalize="off" autocorrect="off" />
+    <p class="muted" style="font-size:.82rem; margin-top:8px">
+      Create at <b>github.com → Settings → Developer settings → Fine-grained tokens</b>.
+      Give it access to <b>only this one repository</b>, with <b>Contents: Read and write</b>. Nothing else.
+    </p>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="saveSetup">Save &amp; connect</button>
+    </div>
+    <p id="setupMsg" class="muted" style="margin-top:10px"></p>
+  </div>
+  <div class="card">
+    <h3>Study without syncing</h3>
+    <p class="muted">You can practice right now and add GitHub sync later. Progress is kept on this device until you connect.</p>
+    <button class="btn secondary" id="skipSetup">Start without sync</button>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="view-home" class="hidden">
+  <div class="grid">
+    <div class="stat"><div class="n" id="s-streak">0</div><div class="l">day streak</div></div>
+    <div class="stat"><div class="n" id="s-answered">0</div><div class="l">questions answered</div></div>
+    <div class="stat"><div class="n" id="s-acc">—</div><div class="l">overall accuracy</div></div>
+    <div class="stat"><div class="n" id="s-today">0</div><div class="l">answered today</div></div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:4px">Today&rsquo;s session</h2>
+    <div class="row">
+      <div style="flex:1; min-width:130px">
+        <label class="fld">Focus</label>
+        <select id="sel-section">
+          <option value="mixed">Mixed (LR-heavy)</option>
+          <option value="LR">Logical Reasoning only</option>
+          <option value="RC">Reading Comp only</option>
+          <option value="weak">Target my weak areas</option>
+          <option value="review" id="opt-review">Review my mistakes</option>
+        </select>
+      </div>
+      <div style="width:110px">
+        <label class="fld">Length</label>
+        <select id="sel-count">
+          <option>3</option><option selected>6</option><option>9</option><option>12</option>
+        </select>
+      </div>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <button class="btn" id="startBtn">Start practice</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Accuracy by question type <span class="muted" style="font-weight:400">(weakest first)</span></h3>
+    <table class="acc"><tbody id="typeTable"><tr><td class="muted">No data yet — finish a session to see where you lose points.</td></tr></tbody></table>
+  </div>
+
+  <div class="card">
+    <h3>Progress trend <span class="muted" style="font-weight:400">(rolling accuracy)</span></h3>
+    <div id="trendChart"></div>
+    <div class="row" style="margin-top:10px; justify-content:space-between">
+      <div><div class="muted" style="font-size:.8rem">Est. score band</div><div id="predBand" style="font-weight:700; font-size:1.15rem">—</div></div>
+      <div><div class="muted" style="font-size:.8rem">Avg pace</div><div id="paceStat" style="font-weight:700; font-size:1.15rem">—</div></div>
+      <div><div class="muted" style="font-size:.8rem">Within pace</div><div id="pacePct" style="font-weight:700; font-size:1.15rem">—</div></div>
+    </div>
+    <p class="muted" style="font-size:.76rem; margin-top:10px">Rough estimate from your accuracy on hard (difficulty 4–5) questions — only official timed PrepTests give a true score.</p>
+  </div>
+
+  <div class="card">
+    <h3>Your trap profile <span class="muted" style="font-weight:400">(where wrong answers pull you)</span></h3>
+    <div id="trapProfile"><div class="muted">No misses yet — your trap patterns will appear here.</div></div>
+  </div>
+
+  <div class="card">
+    <h3>How to study toward 170+</h3>
+    <ul class="muted" style="padding-left:18px; margin:6px 0">
+      <li><b>Always write your reasoning</b> before revealing — at your level, points leak from process slips you can only fix if you can see them.</li>
+      <li><b>Necessary Assumption:</b> use the negation test to break your final two. Negate logically, not dramatically.</li>
+      <li><b>Flaw:</b> watch for <i>absence of evidence ≠ evidence of absence</i>, and answers that inflate a narrow claim into a universal one.</li>
+      <li><b>Accuracy before speed.</b> Lock in the method now; add timing pressure once you are consistently right.</li>
+    </ul>
+  </div>
+
+  <div class="sync" id="syncLine"></div>
+</section>
+
+<!-- SESSION -->
+<section id="view-session" class="hidden">
+  <div class="progressbar"><i id="pbar"></i></div>
+  <div class="qmeta" id="qmeta"></div>
+
+  <div id="passageWrap"></div>
+  <div class="stim" id="stim"></div>
+  <div class="prompt" id="prompt"></div>
+  <div id="choices"></div>
+
+  <div id="reasonBox">
+    <label class="fld">Your reasoning (required) — what makes your pick right, and which trap tempted you?</label>
+    <textarea id="reasonInput" placeholder="Write your reasoning here before revealing…"></textarea>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="revealBtn" disabled>Reveal answer</button>
+    </div>
+  </div>
+
+  <div id="feedback" class="hidden"></div>
+  <div id="afterFeedback" class="row hidden" style="margin-top:8px">
+    <button class="btn" id="nextBtn">Next question</button>
+    <button class="btn secondary small" id="quitBtn">End session</button>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section id="view-summary" class="hidden">
+  <div class="card">
+    <h2>Session complete</h2>
+    <div class="grid" style="margin-top:8px">
+      <div class="stat"><div class="n" id="sum-score">0/0</div><div class="l">this session</div></div>
+      <div class="stat"><div class="n" id="sum-acc">—</div><div class="l">session accuracy</div></div>
+    </div>
+    <div id="sum-types" style="margin-top:12px"></div>
+    <div class="sync" id="sum-sync" style="margin-top:12px"></div>
+    <div class="row" style="margin-top:14px">
+      <button class="btn" id="homeBtn">Back to dashboard</button>
+    </div>
+  </div>
+</section>
+
+<!-- SETTINGS -->
+<section id="view-settings" class="hidden">
+  <div class="card">
+    <h2>Settings</h2>
+    <label class="fld">GitHub username (owner)</label>
+    <input id="set-owner" autocapitalize="off" autocorrect="off" />
+    <label class="fld">Repository name</label>
+    <input id="set-repo" autocapitalize="off" autocorrect="off" />
+    <label class="fld">Token (leave blank to keep current)</label>
+    <input id="set-token" type="password" placeholder="unchanged" autocapitalize="off" autocorrect="off" />
+    <div class="row" style="margin-top:14px">
+      <button class="btn small" id="set-save">Save</button>
+      <button class="btn secondary small" id="set-sync">Sync now</button>
+      <button class="btn secondary small" id="set-back">Back</button>
+    </div>
+    <p id="setStatus" class="muted" style="margin-top:10px"></p>
+  </div>
+  <div class="card">
+    <h3>Data</h3>
+    <p class="muted">Local device progress can be re-pulled from GitHub anytime you are connected.</p>
+    <button class="btn secondary small" id="set-reset">Clear local progress on this device</button>
+  </div>
+</section>
+
+<div id="toast" class="toast hidden"></div>
+
+<footer class="help">LSAT Daily · practice + explanations, synced to your GitHub</footer>
+
+<script>
+"use strict";
+/* ---------------- config / storage ---------------- */
+const LS = {
+  owner:"lsat_owner", repo:"lsat_repo", token:"lsat_token",
+  progress:"lsat_progress", sha:"lsat_sha", setupDone:"lsat_setup"
+};
+const cfg = {
+  get owner(){return localStorage.getItem(LS.owner)||""},
+  get repo(){return localStorage.getItem(LS.repo)||""},
+  get token(){return localStorage.getItem(LS.token)||""},
+  get connected(){return !!(this.owner && this.repo && this.token)}
+};
+const PROGRESS_PATH = "progress/progress.json";
+
+/* ---------------- state ---------------- */
+let CARDS = [];            // flattened answerable cards
+let PROGRESS = { version:1, goal:"LSAT 170+", attempts:[] };
+let session = null;        // {queue, idx, results}
+
+/* ---------------- utils ---------------- */
+const $ = s => document.querySelector(s);
+const el = (tag, cls, html) => { const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; };
+function esc(s){ return String(s).replace(/[&<>]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+function show(id){ ["setup","home","session","summary","settings"].forEach(v=>$("#view-"+v).classList.add("hidden")); $("#view-"+id).classList.remove("hidden"); window.scrollTo(0,0); }
+let toastT;
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.remove("hidden"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.add("hidden"), 3200); }
+function b64encode(str){ return btoa(unescape(encodeURIComponent(str))); }
+function b64decode(str){ return decodeURIComponent(escape(atob(str.replace(/\s/g,"")))); }
+function todayStr(d){ d=d||new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function dayOf(ts){ return todayStr(new Date(ts)); } // local calendar day of an attempt (timestamps are stored UTC)
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+/* ---------------- load question bank ---------------- */
+async function fetchJSON(path){
+  // try relative (GitHub Pages), then raw fallback
+  try{ const r=await fetch(path,{cache:"no-store"}); if(r.ok) return await r.json(); }catch(e){}
+  if(cfg.owner && cfg.repo){
+    for(const branch of ["main","master"]){
+      try{ const r=await fetch(`https://raw.githubusercontent.com/${cfg.owner}/${cfg.repo}/${branch}/${path}`,{cache:"no-store"});
+        if(r.ok) return await r.json(); }catch(e){}
+    }
+  }
+  throw new Error("Could not load "+path);
+}
+async function loadBank(){
+  const lr = await fetchJSON("questions/lr.json").catch(()=>[]);
+  const rc = await fetchJSON("questions/rc.json").catch(()=>[]);
+  const cards = [];
+  lr.forEach(q => cards.push({ ...q, cardId:q.id }));
+  rc.forEach(p => (p.questions||[]).forEach(q => cards.push({
+    cardId:q.id, section:"RC", type:q.type, difficulty:p.difficulty,
+    passageId:p.id, passageTitle:p.title, passageText:p.passage,
+    prompt:q.prompt, choices:q.choices, answer:q.answer,
+    explanation:q.explanation, traps:q.traps||{}, trapTags:q.trapTags||{}, takeaway:q.takeaway||"",
+    stimulus:null
+  })));
+  CARDS = cards;
+}
+
+/* ---------------- GitHub sync ---------------- */
+async function ghGet(){
+  const url=`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${PROGRESS_PATH}`;
+  const r=await fetch(url,{headers:{Authorization:"Bearer "+cfg.token, Accept:"application/vnd.github+json"}});
+  if(r.status===404) return {content:null, sha:null};
+  if(!r.ok) throw new Error("GitHub read failed ("+r.status+")");
+  const j=await r.json();
+  return {content:JSON.parse(b64decode(j.content)), sha:j.sha};
+}
+async function ghPut(obj, sha){
+  const url=`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${PROGRESS_PATH}`;
+  const body={ message:"Update LSAT progress "+todayStr(), content:b64encode(JSON.stringify(obj,null,2)) };
+  if(sha) body.sha=sha;
+  const r=await fetch(url,{method:"PUT",
+    headers:{Authorization:"Bearer "+cfg.token, Accept:"application/vnd.github+json"},
+    body:JSON.stringify(body)});
+  if(!r.ok){ const t=await r.text(); throw new Error("GitHub write failed ("+r.status+"): "+t.slice(0,120)); }
+  const j=await r.json();
+  return j.content.sha;
+}
+function attemptKey(a){ return a.cardId+"|"+a.ts; }
+function mergeProgress(a,b){
+  const seen=new Set(), out=[];
+  [...(a.attempts||[]),...(b.attempts||[])].forEach(x=>{ const k=attemptKey(x); if(!seen.has(k)){seen.add(k); out.push(x);} });
+  out.sort((x,y)=>x.ts<y.ts?-1:1);
+  return { version:1, goal:a.goal||b.goal||"LSAT 170+", attempts:out };
+}
+function saveLocal(){ localStorage.setItem(LS.progress, JSON.stringify(PROGRESS)); }
+async function pullRemote(){
+  if(!cfg.connected) return false;
+  const {content,sha}=await ghGet();
+  localStorage.setItem(LS.sha, sha||"");
+  if(content){ PROGRESS=mergeProgress(PROGRESS, content); saveLocal(); }
+  return true;
+}
+async function pushRemote(){
+  if(!cfg.connected) return false;
+  // pull-merge-push to avoid clobbering other devices
+  let sha=localStorage.getItem(LS.sha)||null;
+  try{ const {content,sha:rsha}=await ghGet(); if(content) PROGRESS=mergeProgress(PROGRESS,content); sha=rsha; }catch(e){}
+  const newSha=await ghPut(PROGRESS, sha);
+  localStorage.setItem(LS.sha, newSha);
+  saveLocal();
+  return true;
+}
+function syncStatus(txt, cls){
+  const line=`<span class="dot ${cls}"></span>${txt}`;
+  $("#syncLine").innerHTML=line;
+}
+
+/* ---------------- stats ---------------- */
+function stats(){
+  const at=PROGRESS.attempts||[];
+  const answered=at.length;
+  const correct=at.filter(a=>a.correct).length;
+  const days=new Set(at.map(a=>dayOf(a.ts)));
+  // streak
+  let streak=0; let d=new Date();
+  if(days.has(todayStr(d)) || days.has(todayStr(new Date(Date.now()-864e5)))){
+    if(!days.has(todayStr(d))) d=new Date(Date.now()-864e5);
+    while(days.has(todayStr(d))){ streak++; d=new Date(d.getTime()-864e5); }
+  }
+  const today=at.filter(a=>dayOf(a.ts)===todayStr()).length;
+  const byType={};
+  at.forEach(a=>{ const t=a.type||"Other"; (byType[t]=byType[t]||{n:0,c:0}); byType[t].n++; if(a.correct)byType[t].c++; });
+  return {answered,correct,acc:answered?Math.round(100*correct/answered):null,streak,today,byType,days};
+}
+function weakTypes(){
+  const {byType}=stats();
+  return Object.entries(byType).filter(([,v])=>v.n>=1)
+    .map(([t,v])=>({type:t, n:v.n, acc:v.c/v.n}))
+    .sort((a,b)=>a.acc-b.acc);
+}
+
+/* ---------------- advanced analytics ---------------- */
+const TARGET_SEC = 90; // ~1.4 min/question pace on the real test
+const TRAP_LABELS = {
+  "too-strong":       {name:"Overly strong wording", tip:"You gravitate to answers with absolute terms (never, only, always, cannot) that are stronger than the argument needs. On your final two, prefer the more modest wording."},
+  "out-of-scope":     {name:"Out of scope", tip:"You pick answers that raise something the argument never addresses. Ask: is this idea actually in the stimulus?"},
+  "reversed":         {name:"Reversed logic", tip:"You flip a conditional or run it backward. Diagram sufficient → necessary before choosing."},
+  "half-right":       {name:"Half-right / incomplete", tip:"You pick answers that are partly correct but don't finish the job. The right answer must satisfy ALL of what's required."},
+  "real-but-elsewhere":{name:"Real flaw, wrong argument", tip:"You pick a genuine reasoning pattern that THIS argument doesn't actually commit. Confirm the flaw is present here, not merely plausible."},
+  "opposite":         {name:"Backwards effect", tip:"You pick an answer that does the opposite of the task — weakening when asked to strengthen, deepening a paradox, or restating the view being argued against."},
+  "premise-restate":  {name:"Premise, not conclusion", tip:"You pick a supporting premise or concession instead of the main claim. Ask what everything else is there to support."}
+};
+function fmtTime(s){ if(s==null) return "—"; const m=Math.floor(s/60), r=s%60; return m+":"+String(r).padStart(2,"0"); }
+function paceStats(){
+  const timed=(PROGRESS.attempts||[]).filter(a=>typeof a.seconds==="number");
+  if(!timed.length) return null;
+  const avg=Math.round(timed.reduce((s,a)=>s+a.seconds,0)/timed.length);
+  const under=timed.filter(a=>a.seconds<=TARGET_SEC).length;
+  return {avg, pct:Math.round(100*under/timed.length), n:timed.length};
+}
+function latestByCard(){ const m={}; (PROGRESS.attempts||[]).forEach(a=>{ m[a.cardId]=a; }); return m; }
+function reviewQueueIds(){ const m=latestByCard(); return Object.keys(m).filter(id=>!m[id].correct); }
+function trapProfile(){
+  const wrong=(PROGRESS.attempts||[]).filter(a=>!a.correct && a.trapTag);
+  const c={}; wrong.forEach(a=>{ c[a.trapTag]=(c[a.trapTag]||0)+1; });
+  const total=wrong.length;
+  return Object.entries(c).map(([k,n])=>({key:k, n, pct:total?Math.round(100*n/total):0}))
+    .sort((a,b)=>b.n-a.n);
+}
+function rollingSeries(win){
+  const at=PROGRESS.attempts||[]; win=win||10; const out=[];
+  for(let i=0;i<at.length;i++){ const slice=at.slice(Math.max(0,i-win+1),i+1);
+    out.push(slice.filter(a=>a.correct).length/slice.length); }
+  return out.slice(-30);
+}
+function sparkline(series){
+  if(series.length<2) return '<div class="muted">Answer a few more questions to see your trend line.</div>';
+  const W=300,H=90,pad=8;
+  const xs=i=>pad+i*(W-2*pad)/(series.length-1);
+  const ys=v=>H-pad-v*(H-2*pad);
+  const d=series.map((v,i)=>(i?"L":"M")+xs(i).toFixed(1)+","+ys(v).toFixed(1)).join(" ");
+  const area=d+" L"+xs(series.length-1).toFixed(1)+","+(H-pad)+" L"+xs(0).toFixed(1)+","+(H-pad)+" Z";
+  const g70=ys(0.7), g90=ys(0.9);
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" height="96" preserveAspectRatio="none" style="display:block">
+    <line x1="0" y1="${g90}" x2="${W}" y2="${g90}" stroke="var(--good)" stroke-opacity=".35" stroke-dasharray="3 3"/>
+    <line x1="0" y1="${g70}" x2="${W}" y2="${g70}" stroke="var(--warn)" stroke-opacity=".35" stroke-dasharray="3 3"/>
+    <path d="${area}" fill="var(--accent)" fill-opacity=".12"/>
+    <path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+  </svg>`;
+}
+function predictedBand(){
+  const s=stats();
+  if(s.answered<15) return {band:null, need:15-s.answered};
+  const a=s.acc/100;
+  const t=[[.90,"170–180"],[.84,"165–172"],[.77,"160–167"],[.69,"155–162"],[.60,"150–157"],[.50,"144–152"]];
+  for(const row of t) if(a>=row[0]) return {band:row[1]};
+  return {band:"below ~144"};
+}
+
+/* ---------------- dashboard ---------------- */
+function renderHome(){
+  const s=stats();
+  $("#s-streak").textContent=s.streak;
+  $("#s-answered").textContent=s.answered;
+  $("#s-acc").textContent=s.acc==null?"—":s.acc+"%";
+  $("#s-today").textContent=s.today;
+  const tbody=$("#typeTable");
+  const wt=weakTypes();
+  if(!wt.length){ tbody.innerHTML='<tr><td class="muted">No data yet — finish a session to see where you lose points.</td></tr>'; }
+  else{
+    tbody.innerHTML="";
+    wt.forEach(r=>{
+      const pct=Math.round(r.acc*100);
+      const col=pct>=80?"var(--good)":pct>=55?"var(--warn)":"var(--bad)";
+      const tr=el("tr");
+      tr.innerHTML=`<td>${esc(r.type)} <span class="muted">(${r.n})</span>
+        <div class="bar"><i style="width:${pct}%; background:${col}"></i></div></td>
+        <td>${pct}%</td>`;
+      tbody.appendChild(tr);
+    });
+  }
+  // review-mode option label + enable/disable
+  const nrev=reviewQueueIds().length;
+  const ro=$("#opt-review");
+  if(ro){ ro.textContent = nrev? "Review my mistakes ("+nrev+")" : "Review my mistakes"; ro.disabled = nrev===0; }
+
+  // progress trend + pace + predicted band
+  $("#trendChart").innerHTML=sparkline(rollingSeries(10));
+  const pb=predictedBand();
+  $("#predBand").textContent = pb.band ? pb.band : (pb.need ? pb.need+" to go" : "—");
+  const ps=paceStats();
+  $("#paceStat").textContent = ps ? fmtTime(ps.avg) : "—";
+  $("#pacePct").textContent  = ps ? ps.pct+"%" : "—";
+
+  // trap profile
+  const tp=trapProfile(), tpEl=$("#trapProfile");
+  if(!tp.length){ tpEl.innerHTML='<div class="muted">No misses yet — your trap patterns will appear here.</div>'; }
+  else{
+    tpEl.innerHTML=tp.map(t=>{
+      const L=TRAP_LABELS[t.key]||{name:t.key,tip:""};
+      return `<div style="margin:12px 0">
+        <div style="display:flex; justify-content:space-between; gap:8px"><b>${esc(L.name)}</b>
+          <span class="muted" style="white-space:nowrap">${t.n} miss${t.n>1?"es":""} · ${t.pct}%</span></div>
+        <div class="bar"><i style="width:${t.pct}%; background:var(--bad)"></i></div>
+        <div class="muted" style="font-size:.82rem; margin-top:5px">${esc(L.tip)}</div>
+      </div>`;
+    }).join("");
+  }
+
+  if(cfg.connected) syncStatus("Synced to "+esc(cfg.owner)+"/"+esc(cfg.repo), "on");
+  else syncStatus("Not connected — progress saved on this device only. Tap ⚙︎ to connect GitHub.", "off");
+}
+
+/* ---------------- session build ---------------- */
+function seenCount(cardId){ return (PROGRESS.attempts||[]).filter(a=>a.cardId===cardId).length; }
+function lastSeen(cardId){ const a=(PROGRESS.attempts||[]).filter(x=>x.cardId===cardId); return a.length?a[a.length-1].ts:""; }
+function typeAcc(type){ const {byType}=stats(); const v=byType[type]; return v?v.c/v.n:null; }
+
+function buildQueue(focus, n){
+  const weak=new Set(weakTypes().filter(w=>w.acc<0.7).map(w=>w.type));
+  function score(c){
+    let s=Math.random()*8;
+    const seen=seenCount(c.cardId);
+    s += seen===0?60:(-8*seen);               // strongly prefer unseen
+    const ta=typeAcc(c.type);
+    if(ta!=null && ta<0.7) s+= (0.7-ta)*40;    // boost weak types
+    if(weak.has(c.type)) s+=10;
+    return s;
+  }
+  if(focus==="review"){
+    const ids=reviewQueueIds();
+    const pool=CARDS.filter(c=>ids.indexOf(c.cardId)>=0)
+      .sort((a,b)=> lastSeen(a.cardId)<lastSeen(b.cardId)?-1:1); // oldest miss first
+    return pool.slice(0,n);
+  }
+  let pool=CARDS.slice();
+  if(focus==="LR") pool=pool.filter(c=>c.section==="LR");
+  else if(focus==="RC") pool=pool.filter(c=>c.section==="RC");
+
+  if(focus==="mixed" || focus==="weak"){
+    // LR-heavy roughly 2:1
+    const lr=pool.filter(c=>c.section==="LR").sort((a,b)=>score(b)-score(a));
+    const rc=pool.filter(c=>c.section==="RC").sort((a,b)=>score(b)-score(a));
+    const nRC=Math.max(1,Math.round(n/3)), nLR=n-nRC;
+    let q=[...lr.slice(0,nLR), ...rc.slice(0,nRC)];
+    if(q.length<n){ // top up from the larger pool
+      const extra=pool.filter(c=>!q.includes(c)).sort((a,b)=>score(b)-score(a));
+      q=q.concat(extra.slice(0,n-q.length));
+    }
+    return shuffle(q).slice(0,n);
+  }
+  return pool.sort((a,b)=>score(b)-score(a)).slice(0,n);
+}
+
+function startSession(){
+  const focus=$("#sel-section").value;
+  const n=parseInt($("#sel-count").value,10)||6;
+  const queue=buildQueue(focus,n);
+  if(!queue.length){ toast("No questions available for that focus."); return; }
+  session={queue, idx:0, results:[]};
+  show("session");
+  renderCard();
+}
+
+let curPick=null;
+function renderCard(){
+  const c=session.queue[session.idx];
+  curPick=null;
+  $("#pbar").style.width=((session.idx)/session.queue.length*100)+"%";
+  $("#qmeta").innerHTML=`<span class="pill">${esc(c.section)}</span>
+    <span class="pill">${esc(c.type)}</span>
+    <span class="pill">Difficulty ${c.difficulty||"—"}</span>
+    <span class="muted">Q ${session.idx+1} of ${session.queue.length}</span>
+    <span class="muted" id="qtimer" style="margin-left:auto; font-variant-numeric:tabular-nums">0:00</span>`;
+
+  // passage (RC)
+  const pw=$("#passageWrap"); pw.innerHTML="";
+  if(c.passageText){
+    const d=el("details","passwrap"); d.open = !(session.idx>0 && session.queue[session.idx-1].passageId===c.passageId);
+    d.innerHTML=`<summary>Passage: ${esc(c.passageTitle||"")}</summary><div class="passage">${esc(c.passageText)}</div>`;
+    pw.appendChild(d);
+  }
+  $("#stim").style.display = c.stimulus? "block":"none";
+  $("#stim").textContent = c.stimulus||"";
+  $("#prompt").textContent = c.prompt;
+
+  const ch=$("#choices"); ch.innerHTML="";
+  Object.keys(c.choices).forEach(letter=>{
+    const div=el("div","choice");
+    div.innerHTML=`<span class="lt">${letter}</span><span>${esc(c.choices[letter])}</span>`;
+    div.onclick=()=>{ if(session.revealed) return;
+      curPick=letter;
+      [...ch.children].forEach(x=>x.classList.remove("sel"));
+      div.classList.add("sel");
+      updateReveal();
+    };
+    ch.appendChild(div);
+  });
+
+  session.revealed=false;
+  $("#reasonBox").classList.remove("hidden");
+  $("#reasonInput").value="";
+  $("#feedback").classList.add("hidden");
+  $("#feedback").innerHTML="";
+  $("#afterFeedback").classList.add("hidden");
+  updateReveal();
+  // start the per-question timer
+  session.qStart=Date.now();
+  clearInterval(session.timerInt);
+  session.timerInt=setInterval(()=>{ const t=$("#qtimer");
+    if(t) t.textContent=fmtTime(Math.round((Date.now()-session.qStart)/1000)); }, 1000);
+  window.scrollTo(0,0);
+}
+function updateReveal(){
+  const ok = curPick && $("#reasonInput").value.trim().length>=3;
+  $("#revealBtn").disabled=!ok;
+}
+$("#reasonInput") && ($("#reasonInput").oninput=updateReveal);
+
+function reveal(){
+  const c=session.queue[session.idx];
+  if(!curPick) return;
+  session.revealed=true;
+  clearInterval(session.timerInt);
+  const secs = session.qStart ? Math.round((Date.now()-session.qStart)/1000) : null;
+  const correct = curPick===c.answer;
+  // lock choices + color
+  const ch=$("#choices");
+  [...ch.children].forEach(div=>{
+    const letter=div.querySelector(".lt").textContent;
+    div.classList.add("disabled");
+    div.onclick=null;
+    div.classList.remove("sel");
+    if(letter===c.answer) div.classList.add("correct");
+    else if(letter===curPick) div.classList.add("wrong");
+  });
+  // record
+  const rec={ cardId:c.cardId, section:c.section, type:c.type, chosen:curPick,
+    correct, reasoning:$("#reasonInput").value.trim(), ts:new Date().toISOString(),
+    seconds:secs, trapTag: correct ? null : ((c.trapTags && c.trapTags[curPick]) || null) };
+  PROGRESS.attempts.push(rec);
+  session.results.push(rec);
+  saveLocal();
+
+  // feedback
+  const fb=$("#feedback"); fb.innerHTML="";
+  fb.appendChild(el("div","verdict "+(correct?"ok":"no"),
+    (correct?"✓ Correct":"✗ Not quite")+` — the answer is ${c.answer}` + (correct?"":`. You chose ${curPick}.`)));
+  if(secs!=null) fb.appendChild(el("div","muted",
+    "⏱ "+fmtTime(secs)+" · target "+fmtTime(TARGET_SEC)+(secs>TARGET_SEC?" — over pace (accuracy first for now)":" — on pace")));
+  if(!correct && rec.trapTag && TRAP_LABELS[rec.trapTag])
+    fb.appendChild(el("div","takeaway","<b>Trap type — "+esc(TRAP_LABELS[rec.trapTag].name)+".</b> "+esc(TRAP_LABELS[rec.trapTag].tip)));
+  fb.appendChild(el("div","explain","<b>Why "+c.answer+" is right.</b> "+esc(c.explanation)));
+  const traps=Object.keys(c.traps||{});
+  if(traps.length){
+    const wrap=el("div","traps"); wrap.appendChild(el("h4",null,"Why the other answers are wrong"));
+    traps.forEach(letter=>{ wrap.appendChild(el("div","trap","<b>"+letter+".</b> "+esc(c.traps[letter]))); });
+    fb.appendChild(wrap);
+  }
+  if(c.takeaway) fb.appendChild(el("div","takeaway","<b>Takeaway.</b> "+esc(c.takeaway)));
+  fb.classList.remove("hidden");
+  $("#reasonBox").classList.add("hidden");
+  $("#afterFeedback").classList.remove("hidden");
+  $("#pbar").style.width=((session.idx+1)/session.queue.length*100)+"%";
+  $("#nextBtn").textContent = session.idx+1>=session.queue.length ? "See results" : "Next question";
+  fb.scrollIntoView({behavior:"smooth", block:"start"});
+}
+function nextCard(){
+  if(session.idx+1>=session.queue.length){ endSession(); return; }
+  session.idx++;
+  renderCard();
+}
+async function endSession(){
+  clearInterval(session.timerInt);
+  const r=session.results;
+  const n=r.length, c=r.filter(x=>x.correct).length;
+  $("#sum-score").textContent=c+"/"+n;
+  $("#sum-acc").textContent = n?Math.round(100*c/n)+"%":"—";
+  const byType={};
+  r.forEach(x=>{ (byType[x.type]=byType[x.type]||{n:0,c:0}); byType[x.type].n++; if(x.correct)byType[x.type].c++; });
+  const rows=Object.entries(byType).map(([t,v])=>`<tr><td>${esc(t)}</td><td>${v.c}/${v.n}</td></tr>`).join("");
+  const secsArr=r.filter(x=>typeof x.seconds==="number").map(x=>x.seconds);
+  const avgLine=secsArr.length?`<div class="muted" style="margin-top:8px">Avg time: ${fmtTime(Math.round(secsArr.reduce((a,b)=>a+b,0)/secsArr.length))} / question (target ${fmtTime(TARGET_SEC)})</div>`:"";
+  $("#sum-types").innerHTML=`<table class="acc"><tbody>${rows}</tbody></table>`+avgLine;
+  show("summary");
+  // sync
+  if(cfg.connected){
+    $("#sum-sync").innerHTML='<span class="dot off"></span>Saving to GitHub…';
+    try{ await pushRemote(); $("#sum-sync").innerHTML='<span class="dot on"></span>Saved to '+esc(cfg.owner)+"/"+esc(cfg.repo); }
+    catch(e){ $("#sum-sync").innerHTML='<span class="dot err"></span>Saved on device. GitHub sync failed: '+esc(e.message); }
+  } else {
+    $("#sum-sync").innerHTML='<span class="dot off"></span>Saved on this device. Connect GitHub (⚙︎) to sync.';
+  }
+}
+
+/* ---------------- settings ---------------- */
+function openSettings(){
+  $("#set-owner").value=cfg.owner; $("#set-repo").value=cfg.repo; $("#set-token").value="";
+  $("#setStatus").textContent="";
+  show("settings");
+}
+async function saveSettings(){
+  localStorage.setItem(LS.owner, $("#set-owner").value.trim());
+  localStorage.setItem(LS.repo, $("#set-repo").value.trim());
+  const tk=$("#set-token").value.trim(); if(tk) localStorage.setItem(LS.token, tk);
+  localStorage.removeItem(LS.sha);
+  $("#setStatus").textContent="Saved. Checking connection…";
+  try{ await pullRemote(); $("#setStatus").textContent="Connected and synced ✓"; }
+  catch(e){ $("#setStatus").textContent="Saved, but sync failed: "+e.message; }
+}
+
+/* ---------------- wiring ---------------- */
+$("#navSettings").onclick=openSettings;
+$("#startBtn").onclick=startSession;
+$("#revealBtn").onclick=reveal;
+$("#nextBtn").onclick=nextCard;
+$("#quitBtn").onclick=endSession;
+$("#homeBtn").onclick=()=>{ renderHome(); show("home"); };
+$("#saveSetup").onclick=async ()=>{
+  localStorage.setItem(LS.owner,$("#in-owner").value.trim());
+  localStorage.setItem(LS.repo,$("#in-repo").value.trim());
+  localStorage.setItem(LS.token,$("#in-token").value.trim());
+  localStorage.setItem(LS.setupDone,"1");
+  $("#setupMsg").textContent="Connecting…";
+  try{ await pullRemote(); toast("Connected to GitHub ✓"); }
+  catch(e){ toast("Saved on device; GitHub check failed: "+e.message); }
+  renderHome(); show("home");
+};
+$("#skipSetup").onclick=()=>{ localStorage.setItem(LS.setupDone,"1"); renderHome(); show("home"); };
+$("#set-save").onclick=saveSettings;
+$("#set-sync").onclick=async ()=>{ $("#setStatus").textContent="Syncing…";
+  try{ await pushRemote(); $("#setStatus").textContent="Synced ✓"; }catch(e){ $("#setStatus").textContent="Sync failed: "+e.message; } };
+$("#set-back").onclick=()=>{ renderHome(); show("home"); };
+$("#set-reset").onclick=()=>{ if(confirm("Clear local progress on this device? If connected, it will re-pull from GitHub.")){
+  PROGRESS={version:1,goal:"LSAT 170+",attempts:[]}; localStorage.removeItem(LS.progress); localStorage.removeItem(LS.sha);
+  toast("Local progress cleared."); openSettings(); } };
+
+/* ---------------- boot ---------------- */
+(async function boot(){
+  try{ const p=localStorage.getItem(LS.progress); if(p) PROGRESS=JSON.parse(p); }catch(e){}
+  try{ await loadBank(); }catch(e){ toast("Could not load question bank: "+e.message); }
+  if(cfg.connected){ try{ await pullRemote(); }catch(e){ /* offline ok */ } }
+  if(!localStorage.getItem(LS.setupDone) && !cfg.connected){ show("setup"); }
+  else { renderHome(); show("home"); }
+})();
+
+if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(()=>{}); }
+</script>
+</body>
+</html>

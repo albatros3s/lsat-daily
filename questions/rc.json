@@ -1,0 +1,236 @@
+[
+  {
+    "id": "rc-p1",
+    "section": "RC",
+    "difficulty": 4,
+    "title": "Eyewitness Identification and Lineup Reform",
+    "passage": "For most of the twentieth century, courts treated eyewitness identification as among the most persuasive forms of evidence a prosecutor could offer. A witness who pointed to the defendant and declared, with confidence, that this was the person, could sway a jury more powerfully than fingerprints or documents. Yet decades of research in cognitive psychology have steadily undermined that faith. Memory, this research shows, is not a recording that can be replayed intact; it is reconstructive, assembled anew each time it is recalled and vulnerable to distortion by suggestion, stress, and the passage of time. When the Innocence Project later used DNA testing to overturn wrongful convictions, mistaken eyewitness identification proved to be the single most common contributing factor.\n\nReformers seized on one procedure in particular. In the traditional lineup, a witness views all the suspects at once -- a format known as simultaneous presentation. Critics argued that this invites 'relative judgment': rather than comparing each face against memory, the witness compares the faces against one another and picks whoever looks most like the culprit, even when the actual culprit is absent. As an alternative, psychologists proposed the sequential lineup, in which suspects are shown one at a time and the witness must decide 'yes' or 'no' about each before seeing the next. Forced to judge each face on its own, the theory went, a witness would rely on absolute memory rather than mere comparison, reducing the risk of a confident but false identification.\n\nEarly laboratory studies appeared to confirm the promise of sequential lineups, and several jurisdictions adopted them. But the picture grew more complicated as the research matured. Some later studies found that sequential presentation reduced not only false identifications but also correct ones, so that its net benefit depended on how one weighed the two kinds of error. Others emphasized that lineup format mattered far less than whether the officer administering the lineup knew which person was the suspect -- for an administrator's unconscious cues could steer a witness regardless of the presentation order. The reform debate, in short, revealed that no single procedural fix could substitute for a broader understanding of how memory and suggestion interact.",
+    "questions": [
+      {
+        "id": "rc-p1-q1",
+        "type": "Main Point",
+        "prompt": "Which one of the following most accurately expresses the main point of the passage?",
+        "choices": {
+          "A": "DNA testing has proven that eyewitness identification is unreliable and should no longer be admitted as evidence in criminal trials.",
+          "B": "Although research undermined long-standing confidence in eyewitness identification and prompted procedural reforms such as the sequential lineup, those reforms proved to be only a partial solution to a more complex problem.",
+          "C": "The sequential lineup is superior to the simultaneous lineup because it forces witnesses to rely on absolute rather than relative memory judgments.",
+          "D": "Whether an administrator knows which member of a lineup is the suspect matters more than any other feature of lineup procedure.",
+          "E": "Cognitive psychologists have demonstrated that human memory is reconstructive rather than a faithful recording of past events."
+        },
+        "answer": "B",
+        "explanation": "The passage traces an arc: confidence in eyewitness ID gave way to research, which prompted the sequential-lineup reform, which then proved more complicated and limited than hoped. (B) captures that full arc, including the concluding note that no single fix suffices. A main-point answer must cover the whole passage, not one paragraph.",
+        "traps": {
+          "A": "Too extreme. The passage never argues that eyewitness testimony should be inadmissible -- only that faith in it was overstated.",
+          "C": "States the reformers' theory as if it were the passage's conclusion, but the third paragraph explicitly complicates and qualifies this claim.",
+          "D": "Reports one point from the final paragraph as though it were the thesis. It's a supporting detail, not the overall message.",
+          "E": "True and important, but it's a premise from paragraph one, not the point the whole passage builds toward."
+        },
+        "takeaway": "Main Point answers must span the entire passage. Reject choices that are too strong, or that elevate a single paragraph's detail to the status of the thesis.",
+        "trapTags": {
+          "A": "too-strong",
+          "C": "half-right",
+          "D": "half-right",
+          "E": "premise-restate"
+        }
+      },
+      {
+        "id": "rc-p1-q2",
+        "type": "Inference",
+        "prompt": "The passage suggests that a proponent of sequential lineups in the early period would most likely have believed which one of the following?",
+        "choices": {
+          "A": "Simultaneous lineups should be prohibited in all jurisdictions.",
+          "B": "Relative judgment tends to make witnesses less likely to identify anyone at all.",
+          "C": "Encouraging witnesses to judge each face against their memory individually would reduce false identifications.",
+          "D": "The knowledge of the lineup administrator has a greater effect on accuracy than the order in which suspects are presented.",
+          "E": "Correct identifications and false identifications would decline together under sequential presentation."
+        },
+        "answer": "C",
+        "explanation": "Paragraph two states the reformers' rationale directly: shown suspects one at a time, a witness 'would rely on absolute memory rather than mere comparison, reducing the risk of a confident but false identification.' That is precisely (C) -- what an early proponent believed the reform would accomplish.",
+        "traps": {
+          "A": "The passage says several jurisdictions adopted sequential lineups, not that proponents wanted simultaneous ones banned everywhere. That's an inference beyond the text.",
+          "B": "Reverses the concern. Relative judgment was said to make witnesses pick SOMEONE (the closest match) even when the culprit is absent, not to make them decline to identify.",
+          "D": "This is a finding from LATER research (paragraph three), a complication the early proponents had not embraced -- indeed it partly undercuts their focus on format.",
+          "E": "Also a later finding used to complicate the reform. An early proponent, optimistic about sequential lineups, would not have anticipated that correct IDs would fall too."
+        },
+        "takeaway": "Inference questions about a viewpoint reward staying inside that viewpoint's own paragraph. Later complications and findings are exactly what that earlier view did NOT yet hold.",
+        "trapTags": {
+          "A": "too-strong",
+          "B": "reversed",
+          "D": "out-of-scope",
+          "E": "out-of-scope"
+        }
+      },
+      {
+        "id": "rc-p1-q3",
+        "type": "Function",
+        "prompt": "The author refers to the Innocence Project's use of DNA testing primarily in order to:",
+        "choices": {
+          "A": "argue that DNA evidence should replace eyewitness testimony in criminal trials",
+          "B": "provide real-world corroboration of the claim that faith in eyewitness identification had been misplaced",
+          "C": "illustrate how reconstructive memory distorts a witness's recollection of events",
+          "D": "explain why jurisdictions began adopting sequential lineups",
+          "E": "cast doubt on the reliability of DNA testing itself"
+        },
+        "answer": "B",
+        "explanation": "The DNA reference caps paragraph one, which argues that confidence in eyewitness ID was overstated. Showing that misidentification was the most common factor in DNA-overturned convictions supplies concrete, real-world proof for that argument. Its function is corroboration.",
+        "traps": {
+          "A": "The passage never advocates replacing eyewitness testimony with DNA; that's a recommendation the author does not make.",
+          "C": "The mechanism of reconstructive memory is explained separately; the DNA detail is offered as evidence of consequences, not as an illustration of the mechanism.",
+          "D": "The adoption of sequential lineups is prompted by the reformers' theory in paragraph two, not directly by the DNA statistic.",
+          "E": "The author treats DNA testing as reliable -- it's the tool that reveals the errors, not a target of doubt."
+        },
+        "takeaway": "Function questions ask why a detail is THERE. Locate the surrounding claim and ask what job the detail does for it -- here, supplying evidence for the paragraph's argument.",
+        "trapTags": {
+          "A": "out-of-scope",
+          "C": "half-right",
+          "D": "out-of-scope",
+          "E": "opposite"
+        }
+      },
+      {
+        "id": "rc-p1-q4",
+        "type": "Attitude",
+        "prompt": "The author's attitude toward the sequential lineup as a reform can most accurately be described as:",
+        "choices": {
+          "A": "unqualified enthusiasm for its demonstrated superiority",
+          "B": "dismissiveness toward a procedure that has no scientific basis",
+          "C": "measured recognition of its promise together with awareness of its limitations",
+          "D": "hostility toward those who proposed it",
+          "E": "indifference to whether it is adopted by the courts"
+        },
+        "answer": "C",
+        "explanation": "The author presents the reform's genuine rationale and early support ('promise'), then documents the later findings that complicate it ('reduced correct ones too,' administrator knowledge matters more). That balance -- crediting the idea while noting its limits -- is measured recognition.",
+        "traps": {
+          "A": "'Unqualified' clashes with paragraph three, which explicitly qualifies the reform's benefits.",
+          "B": "The author takes the science seriously; the reform rests on cognitive research, so 'no scientific basis' is wrong.",
+          "D": "Nothing in the tone is hostile toward the reformers; their reasoning is presented respectfully.",
+          "E": "The author clearly cares about the accuracy question and its stakes, so indifference is off the mark."
+        },
+        "takeaway": "Attitude answers are usually moderate. When an author gives both the case for and the limits of an idea, look for a two-sided word like 'measured,' 'qualified,' or 'cautious' -- and reject the extremes.",
+        "trapTags": {
+          "A": "too-strong",
+          "B": "out-of-scope",
+          "D": "too-strong",
+          "E": "out-of-scope"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rc-p2",
+    "section": "RC",
+    "difficulty": 5,
+    "title": "The Tragedy of the Commons Reconsidered",
+    "passage": "In a widely cited 1968 essay, the biologist Garrett Hardin argued that resources held in common are doomed to ruin. Picture a pasture open to all herders. Each has a private incentive to add one more animal, since he captures the full benefit of the extra beast while the cost of overgrazing is spread across everyone. Multiply that logic across all the herders, Hardin concluded, and the pasture is inevitably destroyed. The remedy, he suggested, was either to divide the commons into private parcels or to place it under central government control. For decades this parable shaped policy, lending intellectual support to privatization and to top-down regulation of forests, fisheries, and grazing lands the world over.\n\nThe political scientist Elinor Ostrom challenged Hardin's conclusion not by disputing his arithmetic but by questioning his assumptions. Hardin's herders, she noted, act in isolation: they cannot communicate, cannot make agreements, and cannot punish one another for breaking them. Real communities, Ostrom found through decades of empirical fieldwork, are rarely so helpless. Studying irrigation systems in Nepal, alpine pastures in Switzerland, and coastal fisheries in Turkey, she documented durable arrangements in which the users of a shared resource had themselves devised rules for its use, monitored one another's behavior, and imposed graduated sanctions on violators -- all without either privatization or an external authority. What Hardin had treated as impossible was, in many places, ordinary.\n\nOstrom was careful not to romanticize community management; she stressed that self-governance succeeds only under specifiable conditions, such as clearly defined boundaries and low-cost means of resolving disputes. Her point was not that commons never fail but that Hardin's dilemma was one possible outcome, not an iron law. By reframing the question -- from 'which owner, the individual or the state?' to 'under what conditions can users govern themselves?' -- she opened a line of inquiry that Hardin's stark dichotomy had foreclosed. For this work she became, in 2009, the first woman to receive the Nobel Prize in economics.",
+    "questions": [
+      {
+        "id": "rc-p2-q1",
+        "type": "Main Point",
+        "prompt": "Which one of the following most accurately states the main point of the passage?",
+        "choices": {
+          "A": "Hardin's analysis of the commons was based on faulty arithmetic that Ostrom later corrected.",
+          "B": "Communities that share a resource always manage it more effectively than either private owners or governments.",
+          "C": "By challenging the assumptions behind Hardin's parable, Ostrom showed that self-governance of shared resources is possible under certain conditions, reframing a debate his dichotomy had constrained.",
+          "D": "The tragedy of the commons is an iron law that applies whenever a resource is held in common.",
+          "E": "Ostrom's fieldwork in Nepal, Switzerland, and Turkey earned her the Nobel Prize in economics in 2009."
+        },
+        "answer": "C",
+        "explanation": "The passage sets up Hardin's parable, then devotes its bulk to how Ostrom challenged his assumptions and showed self-governance can work under specifiable conditions, thereby reframing the debate. (C) captures that thesis, including the crucial qualifier 'under certain conditions.'",
+        "traps": {
+          "A": "The passage explicitly says Ostrom challenged Hardin 'not by disputing his arithmetic but by questioning his assumptions.' This gets the nature of her critique backward.",
+          "B": "Too strong. Ostrom stressed self-governance succeeds only under certain conditions and did not claim communities ALWAYS outperform other arrangements.",
+          "D": "This is Hardin's view, which the passage presents in order to have Ostrom qualify it -- not the author's main point.",
+          "E": "A true detail from the last sentence, but a biographical footnote, not the central argument of the passage."
+        },
+        "takeaway": "The main point of a two-thinker passage usually lives with how the second thinker revises the first. Keep the qualifiers ('under certain conditions') -- dropping them creates an overstated trap.",
+        "trapTags": {
+          "A": "out-of-scope",
+          "B": "too-strong",
+          "D": "opposite",
+          "E": "premise-restate"
+        }
+      },
+      {
+        "id": "rc-p2-q2",
+        "type": "Inference",
+        "prompt": "It can most reasonably be inferred from the passage that Ostrom would regard the destruction of a shared pasture as:",
+        "choices": {
+          "A": "an outcome that is impossible whenever herders are able to communicate",
+          "B": "one possible result, more likely when users cannot make or enforce agreements among themselves",
+          "C": "inevitable in the absence of either privatization or government control",
+          "D": "evidence that Hardin's arithmetic was mistaken",
+          "E": "proof that clearly defined boundaries are irrelevant to successful resource management"
+        },
+        "answer": "B",
+        "explanation": "Ostrom held that Hardin's dilemma was 'one possible outcome, not an iron law,' and she traced successful management to users' ability to communicate, agree, monitor, and sanction. It follows she would see ruin as a possible result, made likelier precisely where those capacities are absent -- which is (B).",
+        "traps": {
+          "A": "Too strong. Communication helps, but Ostrom stressed success requires MORE (boundaries, dispute resolution), so she would not call ruin 'impossible' merely because herders can talk.",
+          "C": "This is Hardin's inevitability thesis, exactly what Ostrom rejected.",
+          "D": "The passage says she did not dispute his arithmetic. Ruin wouldn't be evidence against math she accepted.",
+          "E": "Contradicts the passage, which lists clearly defined boundaries among the conditions Ostrom said self-governance requires."
+        },
+        "takeaway": "For inference-about-a-view questions, assemble the answer from that thinker's stated commitments. Ostrom's 'possible, not inevitable' plus her list of success conditions points straight to (B).",
+        "trapTags": {
+          "A": "too-strong",
+          "C": "opposite",
+          "D": "out-of-scope",
+          "E": "opposite"
+        }
+      },
+      {
+        "id": "rc-p2-q3",
+        "type": "Function",
+        "prompt": "The author's discussion of Ostrom's fieldwork in Nepal, Switzerland, and Turkey functions primarily to:",
+        "choices": {
+          "A": "demonstrate that resource management differs unpredictably from one culture to another",
+          "B": "provide empirical examples of communities governing shared resources without privatization or central authority",
+          "C": "suggest that Hardin had never observed a real pasture",
+          "D": "establish that irrigation systems are easier to manage than fisheries",
+          "E": "explain why Ostrom received the Nobel Prize"
+        },
+        "answer": "B",
+        "explanation": "These cases appear right where the passage says real communities devised their own rules, monitored behavior, and sanctioned violators 'without either privatization or an external authority.' The examples serve as empirical proof that what Hardin called impossible actually happens -- exactly (B).",
+        "traps": {
+          "A": "The examples show a common pattern of successful self-governance, not unpredictable cultural variation.",
+          "C": "The passage never claims Hardin lacked real-world observation; it says he made different ASSUMPTIONS, which is not the same charge.",
+          "D": "No comparison of difficulty across resource types is drawn; the three cases are offered as parallel successes.",
+          "E": "The Nobel is mentioned only at the very end and isn't the reason the fieldwork is cited mid-passage."
+        },
+        "takeaway": "Concrete examples almost always function as evidence for the claim they sit beside. Read the sentence introducing them to see which claim they're proving.",
+        "trapTags": {
+          "A": "out-of-scope",
+          "C": "out-of-scope",
+          "D": "out-of-scope",
+          "E": "out-of-scope"
+        }
+      },
+      {
+        "id": "rc-p2-q4",
+        "type": "Inference",
+        "prompt": "The passage provides the most support for which one of the following statements about Hardin's parable?",
+        "choices": {
+          "A": "It was rejected by policymakers as soon as it was published.",
+          "B": "Its influence on policy stemmed partly from assumptions that did not hold for many real communities.",
+          "C": "It accurately described the behavior of herders in Nepal and Switzerland.",
+          "D": "It was intended by Hardin as a defense of community self-governance.",
+          "E": "It has been shown to be mathematically incoherent."
+        },
+        "answer": "B",
+        "explanation": "The passage says the parable 'shaped policy' for decades yet rested on assumptions -- isolated, non-communicating herders -- that Ostrom's fieldwork showed did not describe many real communities. So its influence traced partly to assumptions that often failed to hold. That's (B).",
+        "traps": {
+          "A": "The opposite: the parable was influential 'for decades' and lent support to real policy, so it was not promptly rejected.",
+          "C": "Those very cases are presented as counterexamples to Hardin's picture, not confirmations of it.",
+          "D": "Hardin proposed privatization or central control, the reverse of championing community self-governance.",
+          "E": "The passage credits his arithmetic as sound; the flaw was in his assumptions, not his math."
+        },
+        "takeaway": "When a question asks what's supported about a specific idea, combine what the passage says about its influence with what it says about its flaws. The best answer is the modest synthesis the text actually licenses.",
+        "trapTags": {
+          "A": "opposite",
+          "C": "opposite",
+          "D": "opposite",
+          "E": "out-of-scope"
+        }
+      }
+    ]
+  }
+]

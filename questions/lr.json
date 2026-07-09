@@ -1,0 +1,420 @@
+[
+  {
+    "id": "lr-0001",
+    "section": "LR",
+    "type": "Flaw",
+    "difficulty": 5,
+    "stimulus": "Columnist: Studies consistently show that people who regularly practice meditation report lower stress levels than those who do not. However, these studies rely entirely on self-reporting, and meditators, having invested considerable time in the practice, are motivated to believe that it works. Therefore, meditation almost certainly has no genuine effect on stress.",
+    "prompt": "The reasoning in the columnist's argument is most vulnerable to criticism on the grounds that the argument:",
+    "choices": {
+      "A": "takes the absence of reliable evidence for a claim to establish that the claim is false",
+      "B": "relies on studies whose participants are unlikely to be representative of the general population",
+      "C": "presumes, without justification, that self-reported data can never accurately reflect a person's actual condition",
+      "D": "criticizes the personal motivations of meditators rather than addressing the substance of their reports",
+      "E": "mistakes a mere correlation between meditation and reduced stress for evidence of a causal relationship"
+    },
+    "answer": "A",
+    "explanation": "The columnist shows only that the evidence is unreliable (self-reported plus motivated believers), which at most licenses 'we don't know whether meditation works.' Concluding it 'almost certainly has no genuine effect' treats absent proof as proof of absence. That two-step leap -- from 'your proof is bad' to 'your claim is false' -- is the flaw.",
+    "traps": {
+      "B": "Representativeness is never the columnist's concern; the attack is on the honesty/reliability of self-reports, not on whether the sample generalizes.",
+      "C": "Overshoots. The argument treats these particular reports as suspect, not all self-reports as inherently worthless. Watch for answers that inflate a narrow claim into a universal one.",
+      "D": "Tempting, because there is a whiff of attacking motives. But the columnist does engage the substance (the evidence's reliability), and even granting the motive point, the fatal error is the leap to 'false,' not the mention of motive.",
+      "E": "Describes a real flaw that exists in the wild but not here. The columnist isn't inferring causation from correlation; he's rejecting the studies outright. Classic 170-level trap: a genuine flaw pattern that this argument doesn't commit."
+    },
+    "takeaway": "Absence of evidence is not evidence of absence. When an argument discredits the proof and then declares the claim false, the correct verdict was only 'unproven.'",
+    "tags": [
+      "flaw",
+      "evidence-critique",
+      "absence-of-evidence"
+    ],
+    "trapTags": {
+      "B": "out-of-scope",
+      "C": "too-strong",
+      "D": "real-but-elsewhere",
+      "E": "real-but-elsewhere"
+    }
+  },
+  {
+    "id": "lr-0002",
+    "section": "LR",
+    "type": "Necessary Assumption",
+    "difficulty": 5,
+    "stimulus": "Economist: The city council claims that the new transit tax will reduce traffic congestion. But most drivers surveyed said they would not switch to public transit even if service improved. So the tax revenue, which is earmarked exclusively for transit improvements, will fail to reduce congestion.",
+    "prompt": "Which one of the following is an assumption required by the economist's argument?",
+    "choices": {
+      "A": "The surveyed drivers accurately predicted their own future behavior.",
+      "B": "Traffic congestion cannot be reduced unless a substantial number of current drivers switch to public transit.",
+      "C": "The transit improvements funded by the tax will not attract enough new transit riders to affect congestion.",
+      "D": "The city council has no other plans to reduce traffic congestion besides the transit tax.",
+      "E": "Improving transit service is the least effective way to reduce traffic congestion."
+    },
+    "answer": "C",
+    "explanation": "Negate (C): 'the improvements WILL attract enough new riders to affect congestion.' The conclusion collapses instantly, so (C) is required. The gap it plugs: the survey only covers current drivers, but congestion could still fall via new residents, young people who never start driving, or the minority who do switch. The economist quietly assumes none of that adds up.",
+    "traps": {
+      "A": "'Accurately' is too strong for a necessary assumption. Negate it -- 'drivers did not predict perfectly' -- and even small inaccuracy makes the negation true without sinking the argument, which needs the predictions only roughly right. Strong words (accurately, never, only) usually fail the negation test.",
+      "B": "Wrong mechanism and too strong. Negating it -- 'congestion can be reduced without current drivers switching' -- only opens a possibility; it doesn't assert that possibility operates here, so the argument survives. Not required.",
+      "D": "Irrelevant to whether THIS tax works. Whatever else the council plans, it doesn't change the tax's own effect on congestion. Negation leaves the argument intact.",
+      "E": "A comparative claim the argument never needs. The economist only needs this tax to fail, not for it to be the worst of all options. Negating it changes nothing."
+    },
+    "takeaway": "The negation test: negate a choice; if the argument is destroyed (not merely weakened), it was necessary. Negate logically, not dramatically -- 'not accurately' means 'slightly off,' not 'wildly wrong.' Use it only to break ties between your final two.",
+    "tags": [
+      "necessary-assumption",
+      "negation-test",
+      "survey"
+    ],
+    "trapTags": {
+      "A": "too-strong",
+      "B": "too-strong",
+      "D": "out-of-scope",
+      "E": "out-of-scope"
+    }
+  },
+  {
+    "id": "lr-0003",
+    "section": "LR",
+    "type": "Strengthen",
+    "difficulty": 4,
+    "stimulus": "Archaeologists excavating a 3,000-year-old settlement found that it was crossed by wide, evenly paved roads laid out on a consistent grid. They concluded that the society that built the settlement must have had a centralized authority capable of coordinating large public-works projects.",
+    "prompt": "Which one of the following, if true, most strengthens the archaeologists' conclusion?",
+    "choices": {
+      "A": "The dwellings within the settlement varied considerably in size and apparent wealth.",
+      "B": "Several nearby settlements from the same era had no paved roads at all.",
+      "C": "Building evenly paved roads on a consistent grid requires standardized materials and coordinated labor that independent households acting alone could not have organized.",
+      "D": "The roads were substantially widened by a later civilization that occupied the site.",
+      "E": "No written records describing a governing body have survived from the settlement."
+    },
+    "answer": "C",
+    "explanation": "The conclusion needs the paved grid to be a genuine marker of central coordination. (C) forges exactly that link: if grid roads demand organization beyond what scattered households could manage, then their existence really does point to a coordinating authority. It closes the gap between the physical evidence and the inference about social structure.",
+    "traps": {
+      "A": "Wealth inequality is a different social fact. Unequal households can exist with or without centralized public-works capacity, so this neither supports nor requires the conclusion.",
+      "B": "A comparison that shows this settlement was unusual, but not that paved grids require central authority. Being rare isn't the same as requiring coordination.",
+      "D": "About a later civilization -- irrelevant to what the ORIGINAL builders could organize. Watch for answers that shift the time frame.",
+      "E": "If anything this weakens the case by removing corroborating evidence of a government."
+    },
+    "takeaway": "Strengtheners usually bolt the evidence to the conclusion by ruling out the 'could this happen without X?' alternative. Ask what has to be true for the evidence to actually point where the author says.",
+    "tags": [
+      "strengthen",
+      "causal-link",
+      "bridge"
+    ],
+    "trapTags": {
+      "A": "out-of-scope",
+      "B": "out-of-scope",
+      "D": "out-of-scope",
+      "E": "opposite"
+    }
+  },
+  {
+    "id": "lr-0004",
+    "section": "LR",
+    "type": "Weaken",
+    "difficulty": 4,
+    "stimulus": "After a new law required restaurants to post the calorie count of each menu item, the average number of calories in the meals customers ordered dropped by five percent over the following year. Clearly, posting calorie counts causes diners to choose lower-calorie meals.",
+    "prompt": "Which one of the following, if true, most weakens the argument?",
+    "choices": {
+      "A": "During the same year, a widely publicized national health campaign urged people to reduce the calories they consumed.",
+      "B": "At some restaurants the calorie counts were printed in small type that was easy to overlook.",
+      "C": "The posted calorie counts were frequently inaccurate by a small margin.",
+      "D": "In surveys, most diners said they paid close attention to the posted calorie counts.",
+      "E": "The law applied only to restaurant chains with twenty or more locations."
+    },
+    "answer": "A",
+    "explanation": "The argument infers causation (posting -> lower-calorie choices) from a before/after drop. (A) supplies a rival cause operating over the very same period: a national campaign could account for the five-percent drop with no help from posted counts. An alternative explanation for the correlation is the sharpest way to weaken a causal claim.",
+    "traps": {
+      "B": "If the counts were easy to overlook, the drop happened anyway -- which doesn't clearly cut against the posting-causes-drop claim and could even suggest something else was driving it, but only vaguely. (A) names a concrete competing cause; this doesn't.",
+      "C": "Small inaccuracies don't undermine the idea that seeing (roughly right) counts changed behavior. Accuracy isn't the causal question.",
+      "D": "Strengthens -- diners attending to the counts supports the posting-causes-choice story.",
+      "E": "Scope of the law. Says nothing about whether the counts, rather than something else, caused the drop."
+    },
+    "takeaway": "To weaken a 'X happened then Y happened, so X caused Y' argument, the highest-value move is a rival cause acting in the same window. Don't get pulled by answers that quibble with the data's precision.",
+    "tags": [
+      "weaken",
+      "causal",
+      "alternative-cause"
+    ],
+    "trapTags": {
+      "B": "out-of-scope",
+      "C": "out-of-scope",
+      "D": "opposite",
+      "E": "out-of-scope"
+    }
+  },
+  {
+    "id": "lr-0005",
+    "section": "LR",
+    "type": "Sufficient Assumption",
+    "difficulty": 5,
+    "stimulus": "If a company's data is encrypted, then hackers cannot read it. FinCorp's data is encrypted. Therefore, FinCorp's customers' personal information is safe from theft.",
+    "prompt": "The conclusion follows logically if which one of the following is assumed?",
+    "choices": {
+      "A": "FinCorp's encrypted data includes its customers' personal information.",
+      "B": "If hackers cannot read a company's data, then that company's customers' personal information is safe from theft.",
+      "C": "Only data that is encrypted is safe from theft.",
+      "D": "Hackers cannot read FinCorp's data.",
+      "E": "No company whose data is encrypted has ever had customer information stolen."
+    },
+    "answer": "B",
+    "explanation": "Map the terms: premises get us to 'hackers cannot read FinCorp's data,' but the conclusion is about 'customers' information safe from theft.' (B) is the missing bridge -- it converts 'cannot read' directly into 'customers' info safe from theft,' so the conclusion follows with certainty. Sufficient-assumption answers connect the last premise's term to the conclusion's term.",
+    "traps": {
+      "A": "Links 'data' to 'customer information,' which feels needed, but even granting it you still never reach 'safe from theft.' A partial bridge is not sufficient.",
+      "C": "States a necessary condition (safe -> encrypted), the reverse of what's needed. It doesn't let you conclude anything IS safe.",
+      "D": "Already derivable from the premises (encrypted -> cannot read). Restating a step you already have adds nothing toward 'safe from theft.'",
+      "E": "Empirical and about companies generally, not the clean conditional bridge; 'robbed in the past' doesn't guarantee FinCorp's customer info is safe now, and it mismatches the conclusion's terms."
+    },
+    "takeaway": "For Sufficient Assumption, find the new term in the conclusion, find where the premises stop, and pick the choice that welds those two together. It must GUARANTEE the conclusion, not merely make it likely.",
+    "tags": [
+      "sufficient-assumption",
+      "conditional",
+      "bridge"
+    ],
+    "trapTags": {
+      "A": "half-right",
+      "C": "reversed",
+      "D": "half-right",
+      "E": "too-strong"
+    }
+  },
+  {
+    "id": "lr-0006",
+    "section": "LR",
+    "type": "Must Be True",
+    "difficulty": 4,
+    "stimulus": "Every member of the debate club is on the honor roll. No one on the honor roll has failed a class this year. Some members of the debate club are seniors.",
+    "prompt": "If the statements above are true, which one of the following must also be true?",
+    "choices": {
+      "A": "Some seniors have not failed a class this year.",
+      "B": "No senior has failed a class this year.",
+      "C": "Everyone on the honor roll is a member of the debate club.",
+      "D": "All seniors are on the honor roll.",
+      "E": "Some students on the honor roll are not members of the debate club."
+    },
+    "answer": "A",
+    "explanation": "Chain it: some debate members are seniors; all debate members are on the honor roll; no one on the honor roll has failed. So those senior debate members are on the honor roll and therefore have not failed -- giving us at least some seniors who have not failed a class. That's exactly (A).",
+    "traps": {
+      "B": "Too strong. We only know about seniors who are in the debate club; non-debate seniors are entirely uncovered, so we can't say NO senior failed.",
+      "C": "Reverses the conditional. 'All debate members are on the honor roll' does not mean all honor-roll students are debate members.",
+      "D": "Unsupported -- nothing places all seniors on the honor roll, only the debate-club ones.",
+      "E": "Possible but not necessary. The honor roll could consist entirely of debate members for all we're told, so this doesn't have to be true."
+    },
+    "takeaway": "Must-Be-True answers can't outrun the premises. Distinguish 'some' from 'all,' and never reverse a conditional. If a choice could be false in even one consistent scenario, it's out.",
+    "tags": [
+      "must-be-true",
+      "conditional",
+      "quantifiers"
+    ],
+    "trapTags": {
+      "B": "too-strong",
+      "C": "reversed",
+      "D": "too-strong",
+      "E": "out-of-scope"
+    }
+  },
+  {
+    "id": "lr-0007",
+    "section": "LR",
+    "type": "Parallel Flaw",
+    "difficulty": 5,
+    "stimulus": "Everyone who exercises regularly is healthy. Maria is healthy. Therefore, Maria must exercise regularly.",
+    "prompt": "Which one of the following arguments contains flawed reasoning most similar to that in the argument above?",
+    "choices": {
+      "A": "Every cake sold at this bakery contains sugar. This cake contains sugar. So this cake must have been sold at the bakery.",
+      "B": "Every senator voted for the bill. Lee is a senator. So Lee voted for the bill.",
+      "C": "All dogs are mammals, and no mammals are birds. So no dog is a bird.",
+      "D": "If it rains, the game is canceled. It did not rain. So the game was not canceled.",
+      "E": "Most successful entrepreneurs wake up early. Tom wakes up early. So Tom is probably a successful entrepreneur."
+    },
+    "answer": "A",
+    "explanation": "The stimulus affirms the consequent: from 'exercise -> healthy' and 'healthy,' it wrongly concludes 'exercises.' (A) has the identical structure: from 'bakery -> sugar' and 'sugar,' it wrongly concludes 'bakery.' Both take a sufficient condition being met on the wrong end and run the conditional backward.",
+    "traps": {
+      "B": "Valid modus ponens (senator -> voted; is a senator; so voted). Not flawed at all.",
+      "C": "Valid categorical reasoning. No error to parallel.",
+      "D": "Denies the antecedent (a different flaw). Structurally not a match for affirming the consequent.",
+      "E": "A statistical/converse slip, but it uses 'most' and 'probably,' not the universal-plus-certain form of the stimulus. Parallel questions demand a match in logical FORM, and the certainty level differs."
+    },
+    "takeaway": "For Parallel Flaw, name the exact error first (here: affirming the consequent), then find the choice with the same skeleton. Match the logical form and the certainty level -- 'most/probably' can't parallel 'all/must.'",
+    "tags": [
+      "parallel-flaw",
+      "affirming-consequent",
+      "conditional"
+    ],
+    "trapTags": {
+      "B": "real-but-elsewhere",
+      "C": "real-but-elsewhere",
+      "D": "real-but-elsewhere",
+      "E": "real-but-elsewhere"
+    }
+  },
+  {
+    "id": "lr-0008",
+    "section": "LR",
+    "type": "Principle",
+    "difficulty": 4,
+    "stimulus": "Principle: One should not condemn a decision as imprudent unless one can identify a specific alternative course of action that would have produced a better outcome.",
+    "prompt": "Which one of the following judgments conforms most closely to the principle stated above?",
+    "choices": {
+      "A": "Dana declined to call the mayor's budget imprudent, because she could not point to any specific alternative that would have produced a better result.",
+      "B": "Raj condemned the company's investment as imprudent even though he admitted he had no better strategy in mind.",
+      "C": "Sam praised the committee's plan as prudent mainly because it was popular with the public.",
+      "D": "Lee criticized the board's decision on the ground that it was unpopular with employees.",
+      "E": "Kim, who had identified a clearly superior alternative, chose not to criticize the decision at all."
+    },
+    "answer": "A",
+    "explanation": "The principle forbids condemning a decision as imprudent WITHOUT a specific better alternative in hand. Dana lacks such an alternative and therefore refrains from condemning -- precisely the behavior the principle prescribes. It's the cleanest application of the rule.",
+    "traps": {
+      "B": "A direct violation: Raj condemns as imprudent with no better strategy. Conforming means following the principle, not breaking it.",
+      "C": "About praising something as prudent for being popular -- the principle governs condemnation, not praise, and says nothing about popularity.",
+      "D": "'Unpopular' is not 'imprudent.' The principle addresses imprudence judgments, so criticizing on popularity grounds is outside its scope.",
+      "E": "Not a violation, but not an application either. The principle only bars condemning WITHOUT an alternative; it never requires you to condemn when you have one, so Kim's silence neither follows from nor tests the rule."
+    },
+    "takeaway": "Conform questions reward the choice that the principle actually governs and endorses. Check the principle's trigger (condemning as imprudent) and its scope -- praise, popularity, or optional actions fall outside it.",
+    "tags": [
+      "principle",
+      "conform",
+      "conditional-scope"
+    ],
+    "trapTags": {
+      "B": "opposite",
+      "C": "out-of-scope",
+      "D": "out-of-scope",
+      "E": "half-right"
+    }
+  },
+  {
+    "id": "lr-0009",
+    "section": "LR",
+    "type": "Method of Reasoning",
+    "difficulty": 4,
+    "stimulus": "Critics charge that the district's new curriculum lowers academic standards. But when the curriculum was piloted in several schools last year, students' standardized test scores rose significantly. The critics are therefore mistaken.",
+    "prompt": "The argument proceeds by:",
+    "choices": {
+      "A": "questioning the motives of those who advance the opposing position",
+      "B": "appealing to the judgment of experts on academic standards",
+      "C": "presenting evidence of an outcome that would be unlikely if the opposing position were correct",
+      "D": "pointing out that the opposing position is supported by no evidence whatsoever",
+      "E": "showing that the opposing position rests on an ambiguous use of the term 'standards'"
+    },
+    "answer": "C",
+    "explanation": "The argument rebuts the critics by citing rising test scores -- an outcome you'd expect NOT to see if the curriculum really lowered standards. Producing a result that clashes with a prediction implied by the opposing view is the method here.",
+    "traps": {
+      "A": "No motives are impugned; the response is about results, not the critics' character.",
+      "B": "No expert authority is invoked; the evidence is test-score data, not someone's judgment.",
+      "D": "The argument doesn't claim the critics have no evidence; it offers positive counter-evidence of its own.",
+      "E": "No ambiguity in 'standards' is exposed. The rebuttal is empirical, not semantic."
+    },
+    "takeaway": "Method questions ask HOW, not WHETHER, the argument works. Describe the move in the abstract -- here, 'counters a claim with evidence contrary to what the claim predicts' -- before matching it to a choice.",
+    "tags": [
+      "method",
+      "counterevidence",
+      "rebuttal"
+    ],
+    "trapTags": {
+      "A": "real-but-elsewhere",
+      "B": "real-but-elsewhere",
+      "D": "real-but-elsewhere",
+      "E": "real-but-elsewhere"
+    }
+  },
+  {
+    "id": "lr-0010",
+    "section": "LR",
+    "type": "Point at Issue",
+    "difficulty": 4,
+    "stimulus": "Mara: Public libraries should shift their priorities toward digital resources. Physical books are increasingly obsolete, and limited budgets are better spent on e-books and databases.\nEli: Many patrons still depend on physical books, and libraries serve their communities best by maintaining strong print collections.",
+    "prompt": "Mara and Eli disagree over whether:",
+    "choices": {
+      "A": "public libraries currently offer any digital resources",
+      "B": "some library patrons make use of physical books",
+      "C": "public libraries should receive larger budgets than they now have",
+      "D": "libraries should shift their priorities toward digital resources at the expense of print collections",
+      "E": "digital resources cost less to provide than print collections do"
+    },
+    "answer": "D",
+    "explanation": "Mara explicitly advocates shifting priorities toward digital; Eli argues libraries serve best by keeping strong print collections -- a direct clash over whether to make that shift. (D) is the one claim Mara would affirm and Eli would deny, which is the test for the point at issue.",
+    "traps": {
+      "A": "Neither speaker addresses whether libraries currently offer digital resources; there's no disagreement to locate here.",
+      "B": "Eli asserts patrons use physical books and Mara never denies it. Agreement (or non-engagement) isn't disagreement.",
+      "C": "Budget size isn't discussed by either; both mention spending only in passing, without opposing views on total budget.",
+      "E": "Cost comparison is never raised. Mara mentions budgets but neither states that digital is cheaper, so they don't disagree about it."
+    },
+    "takeaway": "The point at issue is the single statement one speaker affirms and the other denies. Test each choice: would BOTH take a stand, on OPPOSITE sides? If either is silent or agrees, eliminate.",
+    "tags": [
+      "point-at-issue",
+      "disagreement"
+    ],
+    "trapTags": {
+      "A": "out-of-scope",
+      "B": "out-of-scope",
+      "C": "out-of-scope",
+      "E": "out-of-scope"
+    }
+  },
+  {
+    "id": "lr-0011",
+    "section": "LR",
+    "type": "Resolve the Paradox",
+    "difficulty": 4,
+    "stimulus": "A city installed automated cameras at its busiest intersections in order to deter drivers from running red lights. Yet in the year after the cameras were installed, the number of red-light violations officially recorded at those intersections rose sharply, even though surveys showed that drivers were being more cautious than before.",
+    "prompt": "Which one of the following, if true, most helps to resolve the apparent discrepancy described above?",
+    "choices": {
+      "A": "The cameras occasionally malfunctioned and failed to capture some violations.",
+      "B": "Before the cameras were installed, the great majority of red-light violations went undetected and unrecorded; the cameras captured many violations that previously would never have been counted.",
+      "C": "Overall traffic volume at the intersections declined during the year after the cameras were installed.",
+      "D": "Drivers in neighboring cities without cameras also frequently ran red lights.",
+      "E": "The fines imposed for running a red light were increased at the same time the cameras were installed."
+    },
+    "answer": "B",
+    "explanation": "The puzzle is that RECORDED violations rose while actual driving got more cautious. (B) dissolves it by separating the two: previously most violations were simply never caught, so the recorded count was artificially low. Cameras count what used to slip through, so recorded violations can jump even as real red-light running falls.",
+    "traps": {
+      "A": "Malfunctions would UNDER-count violations, pushing the recorded number down -- the opposite of what needs explaining.",
+      "C": "Fewer cars should mean fewer violations, deepening the mystery of why recorded violations rose.",
+      "D": "Other cities are irrelevant to why THIS city's recorded count and driver behavior moved in opposite directions.",
+      "E": "Higher fines add deterrence, which should lower violations -- it sharpens the paradox rather than resolving it."
+    },
+    "takeaway": "Resolve questions often hinge on a hidden distinction. Here it's 'recorded' vs. 'actual.' The right answer reconciles both facts at once; wrong answers usually push one fact the wrong way and worsen the puzzle.",
+    "tags": [
+      "paradox",
+      "resolve",
+      "measurement-vs-reality"
+    ],
+    "trapTags": {
+      "A": "opposite",
+      "C": "opposite",
+      "D": "out-of-scope",
+      "E": "opposite"
+    }
+  },
+  {
+    "id": "lr-0012",
+    "section": "LR",
+    "type": "Main Conclusion",
+    "difficulty": 4,
+    "stimulus": "Some people argue that zoos are unethical simply because they confine animals. It is true that zoos keep animals in enclosures. But accredited zoos fund conservation programs that have rescued several species from extinction, and they educate millions of visitors about wildlife each year. So the benefits of accredited zoos outweigh the ethical costs of confining animals.",
+    "prompt": "Which one of the following most accurately expresses the main conclusion of the argument?",
+    "choices": {
+      "A": "Zoos keep animals in enclosures.",
+      "B": "Accredited zoos fund conservation programs that have rescued species from extinction.",
+      "C": "Zoos are unethical because they confine animals.",
+      "D": "Accredited zoos educate millions of visitors about wildlife each year.",
+      "E": "The benefits of accredited zoos outweigh the ethical costs of confining animals."
+    },
+    "answer": "E",
+    "explanation": "Everything else in the passage supports the final sentence. The conservation and education points are reasons; 'zoos keep animals in enclosures' is a concession. The 'So' signals the author's own claim: the benefits outweigh the ethical costs. That's the main conclusion.",
+    "traps": {
+      "A": "A conceded premise ('It is true that...'), granted only to be outweighed. Concessions are never the main point.",
+      "B": "A supporting premise -- one of the benefits offered as evidence for the conclusion.",
+      "C": "The opposing view the author argues AGAINST, not the author's own conclusion.",
+      "D": "Another supporting premise, not the claim everything else is marshaled to establish."
+    },
+    "takeaway": "Find the main conclusion by asking what everything else supports. Use the 'therefore' test, watch for concessions ('it is true that...'), and don't mistake the view being rebutted for the author's claim.",
+    "tags": [
+      "main-conclusion",
+      "argument-structure"
+    ],
+    "trapTags": {
+      "A": "premise-restate",
+      "B": "premise-restate",
+      "C": "opposite",
+      "D": "premise-restate"
+    }
+  }
+]
