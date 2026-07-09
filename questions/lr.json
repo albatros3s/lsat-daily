@@ -416,5 +416,491 @@
       "C": "opposite",
       "D": "premise-restate"
     }
+  },
+  {
+    "id": "lr-0013",
+    "section": "LR",
+    "type": "Flaw",
+    "difficulty": 5,
+    "stimulus": "Advertisement: In a recent test, BrightSmile toothpaste was compared with the leading brand. Among the dentists who expressed a preference, more chose BrightSmile than chose the leading brand. So BrightSmile is the toothpaste that most dentists prefer.",
+    "prompt": "The reasoning in the advertisement is most vulnerable to criticism on the grounds that it:",
+    "choices": {
+      "A": "draws a conclusion about dentists generally from a premise about only those dentists who expressed a preference",
+      "B": "takes for granted that dentists' preferences are a reliable guide to a toothpaste's quality",
+      "C": "presumes that BrightSmile is superior simply because it is newer than the leading brand",
+      "D": "overlooks the possibility that the leading brand is preferred by many consumers who are not dentists",
+      "E": "relies on the opinions of people whose expertise is unrelated to the claim being made"
+    },
+    "answer": "A",
+    "explanation": "The premise is only about dentists 'who expressed a preference' -- a group that may be a small, unrepresentative slice of all dentists. The conclusion leaps to 'most dentists.' Those with no preference are silently dropped, so the sample can't support a claim about dentists as a whole.",
+    "traps": {
+      "B": "A different assumption. The conclusion is about what dentists prefer, not about quality, so whether preference tracks quality is beside the point.",
+      "C": "Novelty is never offered as the basis for the conclusion; the ad rests on the preference test, not on BrightSmile being newer.",
+      "D": "The argument's conclusion is specifically about dentists, and it does compare the two brands. Non-dentist consumers aren't the gap; the unrepresentative dentist sample is.",
+      "E": "Dentists are relevant experts on toothpaste, so this misdescribes the problem. The flaw is the sampling, not the choice of experts."
+    },
+    "takeaway": "Watch the quantifier shift: 'most who expressed a preference' is not 'most' of the whole group. Sampling only the opinionated silently distorts the conclusion.",
+    "tags": [
+      "flaw",
+      "sampling",
+      "quantifier-shift"
+    ],
+    "trapTags": {
+      "B": "real-but-elsewhere",
+      "C": "out-of-scope",
+      "D": "half-right",
+      "E": "out-of-scope"
+    }
+  },
+  {
+    "id": "lr-0014",
+    "section": "LR",
+    "type": "Strengthen",
+    "difficulty": 5,
+    "stimulus": "Researchers found that people who take short daytime naps score higher on memory tests than people who do not nap. They concluded that napping improves memory.",
+    "prompt": "Which one of the following, if true, most strengthens the researchers' conclusion?",
+    "choices": {
+      "A": "Nappers and non-nappers in the study reported similar levels of daily stress.",
+      "B": "When participants were randomly assigned either to nap or to stay awake, those assigned to nap subsequently scored higher on memory tests.",
+      "C": "The memory tests given to nappers and non-nappers were identical in length and format.",
+      "D": "A few of the non-nappers scored higher on the memory tests than some of the nappers.",
+      "E": "Napping is most common among retirees, who tend to have more unstructured free time."
+    },
+    "answer": "B",
+    "explanation": "The conclusion is causal (napping improves memory), but the evidence is a mere correlation. Random assignment is the strongest possible support: because who naps is decided by chance, differences in later memory scores can't be explained by pre-existing differences or reverse causation. That directly establishes the causal link.",
+    "traps": {
+      "A": "Helpful, since it rules out one confound (stress), but far weaker than randomization. It controls a single alternative, not the causal question as a whole.",
+      "C": "A methodological detail about test fairness. It doesn't address whether napping, rather than something else, caused the higher scores.",
+      "D": "If anything this cuts slightly against the conclusion by showing the effect isn't uniform. It doesn't strengthen the causal claim.",
+      "E": "Introduces a confound: retirees differ in many ways (age, routine) that could affect memory. This points to an alternative explanation, weakening rather than strengthening."
+    },
+    "takeaway": "To turn a correlation into a cause, the gold standard is randomization -- it rules out reverse causation and confounds in one move. Controlling a single variable helps, but less.",
+    "tags": [
+      "strengthen",
+      "causal",
+      "randomization"
+    ],
+    "trapTags": {
+      "A": "half-right",
+      "C": "out-of-scope",
+      "D": "opposite",
+      "E": "opposite"
+    }
+  },
+  {
+    "id": "lr-0015",
+    "section": "LR",
+    "type": "Weaken",
+    "difficulty": 5,
+    "stimulus": "City official: Since we installed brighter streetlights downtown last year, reported nighttime crime there has fallen by 20 percent. The brighter lighting is clearly responsible for the decline, so we should install it citywide.",
+    "prompt": "Which one of the following, if true, most weakens the official's argument?",
+    "choices": {
+      "A": "During the same year, the police department assigned a substantial number of additional officers to patrol the downtown area at night.",
+      "B": "The brighter streetlights consume noticeably more electricity than the lights they replaced.",
+      "C": "Several downtown residents complained that the brighter lighting made it harder for them to sleep.",
+      "D": "Brighter streetlights of the type installed downtown need to be replaced more frequently than standard streetlights.",
+      "E": "In the years just before the brighter lights were installed, downtown nighttime crime had been rising steadily."
+    },
+    "answer": "A",
+    "explanation": "The argument infers that lighting caused the drop from a before/after decline. (A) supplies a rival cause operating in the very same period: more officers on patrol could account for the 20 percent decline with no help from the lighting. An alternative cause in the same window is the sharpest weakener of a causal claim.",
+    "traps": {
+      "B": "The electricity cost of the lights says nothing about whether they caused the crime drop. It's a downside of the intervention, not a challenge to the causal claim.",
+      "C": "Sleep complaints are a side effect, irrelevant to whether the lighting reduced crime.",
+      "D": "Maintenance frequency is about cost, not causation. It doesn't bear on why crime fell.",
+      "E": "A prior rising trend that then reversed after the lights went in would, if anything, support the lighting's effect -- the opposite of weakening."
+    },
+    "takeaway": "The classic causal weakener is an alternative cause acting in the same period. Costs and side effects of the intervention are irrelevant to whether it produced the effect.",
+    "tags": [
+      "weaken",
+      "causal",
+      "alternative-cause"
+    ],
+    "trapTags": {
+      "B": "out-of-scope",
+      "C": "out-of-scope",
+      "D": "out-of-scope",
+      "E": "opposite"
+    }
+  },
+  {
+    "id": "lr-0016",
+    "section": "LR",
+    "type": "Sufficient Assumption",
+    "difficulty": 5,
+    "stimulus": "If a policy is both fair and effective, then it should be adopted. The proposed carbon tax is effective. Therefore, the proposed carbon tax should be adopted.",
+    "prompt": "The conclusion follows logically if which one of the following is assumed?",
+    "choices": {
+      "A": "The proposed carbon tax is fair.",
+      "B": "Only policies that should be adopted are both fair and effective.",
+      "C": "Most policies that are effective should be adopted.",
+      "D": "If a policy is fair, then it should be adopted.",
+      "E": "The proposed carbon tax is more effective than any alternative policy."
+    },
+    "answer": "A",
+    "explanation": "The rule fires only for policies that are both fair AND effective. We're told the tax is effective; the missing piece is 'fair.' Assume (A) and the tax is fair and effective, so by the rule it should be adopted -- the conclusion follows with certainty.",
+    "traps": {
+      "B": "Runs the conditional backward (adopt -> fair and effective). That direction lets you conclude nothing about what SHOULD be adopted.",
+      "C": "'Most' can't guarantee anything about this particular tax, which could be one of the exceptions. Too weak to make the conclusion follow.",
+      "D": "A rule that never fires here: we aren't told the tax is fair, so 'fair -> adopt' can't be triggered. It doesn't deliver the conclusion.",
+      "E": "Being the most effective option doesn't establish fairness, which is the term the rule requires. The conclusion still wouldn't follow."
+    },
+    "takeaway": "Sufficient assumption: supply the exact term the rule needs to fire -- here the tax must be 'fair.' Rules that run backward, or that never trigger, don't get you there.",
+    "tags": [
+      "sufficient-assumption",
+      "conditional"
+    ],
+    "trapTags": {
+      "B": "reversed",
+      "C": "half-right",
+      "D": "half-right",
+      "E": "out-of-scope"
+    }
+  },
+  {
+    "id": "lr-0017",
+    "section": "LR",
+    "type": "Must Be True",
+    "difficulty": 4,
+    "stimulus": "Every painting in the Ruiz collection is either a landscape or a portrait, but not both. More than half of the paintings in the collection are landscapes. Some of the portraits in the collection are valuable.",
+    "prompt": "If the statements above are true, which one of the following must also be true?",
+    "choices": {
+      "A": "Some valuable paintings in the collection are portraits.",
+      "B": "Most of the valuable paintings in the collection are landscapes.",
+      "C": "No landscape in the collection is valuable.",
+      "D": "Most of the paintings in the collection are portraits.",
+      "E": "All of the valuable paintings in the collection are portraits."
+    },
+    "answer": "A",
+    "explanation": "We're told some portraits are valuable. Those paintings are both portraits and valuable, so 'some valuable paintings are portraits' must be true -- it's just the same 'some' statement read the other way around.",
+    "traps": {
+      "B": "We know most PAINTINGS are landscapes, but nothing about most VALUABLE paintings. You can't transfer 'most' from one group to a different one.",
+      "C": "Unsupported. That some portraits are valuable tells us nothing about whether any landscapes are; landscapes could be valuable too.",
+      "D": "Contradicts the premise that more than half the paintings are landscapes.",
+      "E": "Too strong. 'Some portraits are valuable' does not mean every valuable painting is a portrait; valuable landscapes aren't ruled out."
+    },
+    "takeaway": "'Some X are Y' yields only 'some Y are X' -- never 'most' or 'all.' And don't smuggle 'most paintings' into a claim about 'most valuable paintings.'",
+    "tags": [
+      "must-be-true",
+      "quantifiers"
+    ],
+    "trapTags": {
+      "B": "out-of-scope",
+      "C": "too-strong",
+      "D": "opposite",
+      "E": "reversed"
+    }
+  },
+  {
+    "id": "lr-0018",
+    "section": "LR",
+    "type": "Principle",
+    "difficulty": 4,
+    "stimulus": "Principle: A person deserves credit for an achievement only if the achievement resulted from that person's own effort rather than from luck.",
+    "prompt": "Which one of the following judgments conforms most closely to the principle stated above?",
+    "choices": {
+      "A": "Nadia became wealthy purely by winning a lottery, so she deserves no credit for her wealth.",
+      "B": "Ravi became wealthy purely by inheriting a fortune, so he deserves credit for his wealth.",
+      "C": "Because Mia worked hard to write her novel, the novel must be of high quality.",
+      "D": "Since Leo deserves credit for his promotion, his promotion must have resulted from his own effort.",
+      "E": "Ana succeeded through years of diligent practice, so she deserves no credit for her success."
+    },
+    "answer": "A",
+    "explanation": "Nadia's wealth came from luck (a lottery), not effort. The principle says credit is deserved only when an achievement results from effort, so it withholds credit here -- exactly the judgment (A) reaches.",
+    "traps": {
+      "B": "A direct violation: inheritance is luck, so the principle would withhold credit, yet (B) grants it.",
+      "C": "Confuses credit with quality. The principle governs whether someone deserves credit, not whether the work is good.",
+      "D": "Runs the principle backward. 'Credit only if effort' does not license inferring effort from the fact that credit is deserved.",
+      "E": "Contradicts the principle: effort-based success is precisely what should earn credit, yet (E) denies it."
+    },
+    "takeaway": "Apply a principle in its stated direction. 'Credit only if effort' withholds credit for luck-based achievement; it does NOT let you infer effort from credit (that reverses it).",
+    "tags": [
+      "principle",
+      "conform",
+      "conditional"
+    ],
+    "trapTags": {
+      "B": "opposite",
+      "C": "out-of-scope",
+      "D": "reversed",
+      "E": "opposite"
+    }
+  },
+  {
+    "id": "lr-0019",
+    "section": "LR",
+    "type": "Parallel Reasoning",
+    "difficulty": 5,
+    "stimulus": "If the bridge is safe, then it passed inspection. But the bridge did not pass inspection. Therefore, the bridge is not safe.",
+    "prompt": "The pattern of reasoning above is most similar to that in which one of the following?",
+    "choices": {
+      "A": "If this recipe is correct, then it lists baking soda. This recipe does not list baking soda. So this recipe is not correct.",
+      "B": "If the alarm is working, then it will sound during a fire. The alarm sounded. So the alarm is working.",
+      "C": "If an animal is a dog, then it is a mammal. This animal is a mammal. So this animal is a dog.",
+      "D": "If the plant is healthy, then it has green leaves. The plant is healthy. So it has green leaves.",
+      "E": "If the store is open, then its lights are on. The store is not open. So its lights are not on."
+    },
+    "answer": "A",
+    "explanation": "The stimulus is valid modus tollens: given 'safe -> passed' and 'not passed,' it correctly concludes 'not safe.' (A) has the identical form: 'correct -> lists baking soda' and 'does not list baking soda' yields 'not correct.' Deny the consequent, deny the antecedent.",
+    "traps": {
+      "B": "Affirms the consequent (it sounded, so it works) -- an invalid form, not the valid modus tollens of the stimulus.",
+      "C": "Also affirms the consequent (mammal, so dog). Wrong structure.",
+      "D": "Valid, but it's modus ponens (affirm the antecedent), a different skeleton from the stimulus's modus tollens.",
+      "E": "Denies the antecedent (not open, so lights off) -- invalid, and structurally unlike the stimulus."
+    },
+    "takeaway": "Parallel reasoning demands the same logical form. This is modus tollens; modus ponens, affirming the consequent, and denying the antecedent are all different skeletons.",
+    "tags": [
+      "parallel",
+      "modus-tollens",
+      "conditional"
+    ],
+    "trapTags": {
+      "B": "real-but-elsewhere",
+      "C": "real-but-elsewhere",
+      "D": "real-but-elsewhere",
+      "E": "real-but-elsewhere"
+    }
+  },
+  {
+    "id": "lr-0020",
+    "section": "LR",
+    "type": "Method of Reasoning",
+    "difficulty": 5,
+    "stimulus": "Skeptic: You claim the ancient manuscript is genuine because its ink chemically matches ink from the period. But forgers working in that same period had access to exactly that ink. So the ink evidence does nothing to establish that the manuscript is authentic.",
+    "prompt": "The skeptic's argument proceeds by:",
+    "choices": {
+      "A": "arguing that a piece of evidence fails to support a conclusion because it is equally compatible with a competing explanation",
+      "B": "presenting new evidence that directly proves the manuscript is a forgery",
+      "C": "attacking the character of those who believe the manuscript is genuine",
+      "D": "pointing out that the argument depends on a term that has never been clearly defined",
+      "E": "conceding that the manuscript is authentic while objecting to the way that conclusion was reached"
+    },
+    "answer": "A",
+    "explanation": "The skeptic grants that the ink matches the period, then observes that period forgers had the same ink -- so the evidence fits authenticity and forgery equally well. Because it can't distinguish the two, it supports neither. That's the method: neutralize evidence by showing it's equally consistent with a rival hypothesis.",
+    "traps": {
+      "B": "The skeptic never proves forgery; the point is only that the ink evidence is inconclusive, not that the manuscript is fake.",
+      "C": "No one's character is attacked; the argument is about what the evidence can show.",
+      "D": "No ambiguous or undefined term is at issue. The objection is about the evidence, not the wording.",
+      "E": "The skeptic does not concede authenticity; the whole point is that authenticity remains unestablished."
+    },
+    "takeaway": "A powerful rebuttal: show the evidence fits a rival hypothesis just as well, so it can't favor either -- without having to prove the rival true.",
+    "tags": [
+      "method",
+      "evidence",
+      "alternative-explanation"
+    ],
+    "trapTags": {
+      "B": "out-of-scope",
+      "C": "out-of-scope",
+      "D": "out-of-scope",
+      "E": "real-but-elsewhere"
+    }
+  },
+  {
+    "id": "lr-0021",
+    "section": "LR",
+    "type": "Resolve the Paradox",
+    "difficulty": 4,
+    "stimulus": "A company replaced its annual performance reviews with frequent informal feedback, expecting employee satisfaction with the feedback process to rise. Yet a year later, surveyed employees reported lower satisfaction with the feedback process than before -- even though managers were now giving feedback far more often.",
+    "prompt": "Which one of the following, if true, most helps to resolve the apparent discrepancy?",
+    "choices": {
+      "A": "Under the new system, the frequent feedback was almost entirely critical and rarely acknowledged employees' successes.",
+      "B": "Preparing for the old annual reviews had been time-consuming for managers.",
+      "C": "Employees at several other companies also reported low satisfaction with their feedback processes.",
+      "D": "The new feedback system was considerably cheaper for the company to administer.",
+      "E": "Employees generally prefer receiving feedback in person rather than in writing."
+    },
+    "answer": "A",
+    "explanation": "The puzzle is that MORE feedback led to LESS satisfaction. (A) resolves it by revealing the hidden variable -- quality, not quantity. A steady stream of purely critical feedback that ignores good work would naturally lower satisfaction, no matter how frequent it is.",
+    "traps": {
+      "B": "About the burden on managers under the OLD system -- it doesn't explain why employees became less satisfied with the new one.",
+      "C": "Other companies' experiences are irrelevant to why THIS company's satisfaction fell.",
+      "D": "Cost savings to the company say nothing about employees' satisfaction with the feedback.",
+      "E": "Informal feedback is typically delivered in person, so a preference for in-person feedback would predict HIGHER satisfaction -- deepening the puzzle."
+    },
+    "takeaway": "Resolve: the answer must explain both facts at once. More feedback can lower satisfaction when the hidden variable -- here, relentlessly negative content -- is doing the work.",
+    "tags": [
+      "paradox",
+      "resolve"
+    ],
+    "trapTags": {
+      "B": "out-of-scope",
+      "C": "out-of-scope",
+      "D": "out-of-scope",
+      "E": "opposite"
+    }
+  },
+  {
+    "id": "lr-0022",
+    "section": "LR",
+    "type": "Role in Argument",
+    "difficulty": 5,
+    "stimulus": "Although solar panels are expensive to install, they pay for themselves within a decade through energy savings. Homeowners who plan to stay in their homes for the long term should therefore install them. Those planning to move soon, of course, may not recoup the cost.",
+    "prompt": "The claim that solar panels are expensive to install plays which one of the following roles in the argument?",
+    "choices": {
+      "A": "It is a consideration the argument acknowledges but contends is outweighed, for the relevant group of homeowners, by a countervailing benefit.",
+      "B": "It is the main conclusion that the rest of the argument is designed to support.",
+      "C": "It is offered as evidence that homeowners should not install solar panels.",
+      "D": "It is a premise supporting the claim that solar panels pay for themselves within a decade.",
+      "E": "It is an unstated assumption on which the argument's conclusion depends."
+    },
+    "answer": "A",
+    "explanation": "'Although solar panels are expensive' is a concession: the argument grants the drawback, then argues that for long-term homeowners the decade-long payback outweighs it. So the claim is an acknowledged consideration that gets overridden, not a premise or conclusion.",
+    "traps": {
+      "B": "The main conclusion is that long-term homeowners should install panels, not that panels are expensive. The expense is what the argument works past.",
+      "C": "The argument recommends installing for long-term owners, so the expense is not offered to oppose installation; it's conceded and outweighed.",
+      "D": "The expense doesn't support the payback claim -- if anything they're in tension. It isn't a premise for that claim.",
+      "E": "It is explicitly stated ('Although solar panels are expensive'), so it can't be an unstated assumption."
+    },
+    "takeaway": "Role questions: place the claim in the argument's structure. A conceded drawback ('although X') is acknowledged, then outweighed -- neither the conclusion nor a hidden assumption.",
+    "tags": [
+      "role",
+      "argument-structure",
+      "concession"
+    ],
+    "trapTags": {
+      "B": "premise-restate",
+      "C": "opposite",
+      "D": "out-of-scope",
+      "E": "real-but-elsewhere"
+    }
+  },
+  {
+    "id": "lr-0023",
+    "section": "LR",
+    "type": "Point at Issue",
+    "difficulty": 4,
+    "stimulus": "Ari: Standardized tests should be abolished, because they measure test-taking skill more than they measure real knowledge.\nBina: Standardized tests are valuable precisely because, unlike subjective grades, they let us compare students fairly across different schools.",
+    "prompt": "Ari and Bina disagree over whether:",
+    "choices": {
+      "A": "standardized tests primarily measure test-taking skill",
+      "B": "standardized tests should continue to be used",
+      "C": "the grades teachers assign are subjective",
+      "D": "students at different schools should be compared with one another",
+      "E": "possessing real knowledge is important"
+    },
+    "answer": "B",
+    "explanation": "Ari concludes standardized tests should be abolished; Bina defends them as valuable and worth keeping. That is the one claim Ari would deny and Bina would affirm -- whether the tests should continue to be used.",
+    "traps": {
+      "A": "Only Ari makes a claim about what the tests measure. Bina never addresses it, so it isn't a point of disagreement.",
+      "C": "Bina asserts grades are subjective; Ari says nothing about grades. No clash.",
+      "D": "Bina implies comparison across schools is worthwhile; Ari doesn't take a position on it, so they don't disagree about it.",
+      "E": "Neither speaker disputes that real knowledge matters -- Ari even appeals to it. Not at issue."
+    },
+    "takeaway": "The point at issue is the single claim one speaker affirms and the other denies. If either speaker is silent on it, it isn't the disagreement -- even when it's mentioned.",
+    "tags": [
+      "point-at-issue",
+      "disagreement"
+    ],
+    "trapTags": {
+      "A": "out-of-scope",
+      "C": "out-of-scope",
+      "D": "out-of-scope",
+      "E": "out-of-scope"
+    }
+  },
+  {
+    "id": "lr-0024",
+    "section": "LR",
+    "type": "Evaluate the Argument",
+    "difficulty": 5,
+    "stimulus": "Our new hiring software screens resumes far faster than human recruiters can. Last quarter, positions filled using the software were filled in half the time it used to take. So the software makes our hiring process more efficient.",
+    "prompt": "The answer to which one of the following questions would be most useful in evaluating the argument?",
+    "choices": {
+      "A": "Did the employees hired using the software stay and perform as well as those hired by human recruiters?",
+      "B": "How many resumes can the software screen in a single hour?",
+      "C": "Do the human recruiters find the software pleasant to use?",
+      "D": "Are other companies in the industry using similar hiring software?",
+      "E": "Were most of the positions filled last quarter entry-level positions?"
+    },
+    "answer": "A",
+    "explanation": "The argument treats 'filled faster' as 'more efficient.' But speed is only a genuine efficiency gain if the fast hires are also good hires -- if they underperform or quit, the company loses more than it saved. Knowing whether the software's hires performed and stayed as well as recruiters' hires could confirm or overturn the conclusion.",
+    "traps": {
+      "B": "This just restates the software's speed, the very premise already granted. It can't test whether speed amounts to real efficiency.",
+      "C": "Recruiters' enjoyment of the tool is irrelevant to whether hiring became more efficient.",
+      "D": "What other companies do has no bearing on whether the software improved efficiency here.",
+      "E": "The seniority of the positions doesn't tell us whether the faster hiring was actually more efficient."
+    },
+    "takeaway": "Evaluate questions: find the question whose answer could swing the argument either way. 'Fast' only means 'efficient' if the fast hires are also good hires -- so hire quality is the pivot.",
+    "tags": [
+      "evaluate",
+      "causal",
+      "hidden-assumption"
+    ],
+    "trapTags": {
+      "B": "premise-restate",
+      "C": "out-of-scope",
+      "D": "out-of-scope",
+      "E": "out-of-scope"
+    }
+  },
+  {
+    "id": "lr-0025",
+    "section": "LR",
+    "type": "Must Be True",
+    "difficulty": 4,
+    "stimulus": "Everyone who passed the certification exam was given a raise. Some of the employees who passed the exam were later promoted. Raises were also given to some employees who did not pass the exam.",
+    "prompt": "If the statements above are true, which one of the following must also be true?",
+    "choices": {
+      "A": "Some employees who were given a raise were later promoted.",
+      "B": "Every employee who was given a raise passed the certification exam.",
+      "C": "Every employee who passed the certification exam was later promoted.",
+      "D": "Some employees who did not pass the exam were later promoted.",
+      "E": "No employee who was promoted had been given a raise."
+    },
+    "answer": "A",
+    "explanation": "Some who passed the exam were promoted; everyone who passed got a raise. So those promoted employees had received raises -- meaning some employees who got a raise were later promoted. That chain is airtight.",
+    "traps": {
+      "B": "Reverses the relationship. Passing guarantees a raise, but raises also went to some who didn't pass, so not every raise-getter passed.",
+      "C": "Only SOME who passed were promoted; the premise never says all of them were.",
+      "D": "Unsupported. Nothing links the employees who didn't pass to being promoted.",
+      "E": "Contradicts what we derived: the promoted passers did get raises, so it's false that no promoted employee had a raise."
+    },
+    "takeaway": "Chain only what's given. 'All passers got raises' does not mean 'all raise-getters passed' -- raises went to others too. And keep 'some' as 'some.'",
+    "tags": [
+      "must-be-true",
+      "quantifiers",
+      "conditional"
+    ],
+    "trapTags": {
+      "B": "reversed",
+      "C": "too-strong",
+      "D": "out-of-scope",
+      "E": "opposite"
+    }
+  },
+  {
+    "id": "lr-0026",
+    "section": "LR",
+    "type": "Necessary Assumption",
+    "difficulty": 5,
+    "stimulus": "Editorial: The city should build its new stadium downtown rather than in the suburbs. A downtown stadium would draw fans to nearby restaurants and shops before and after games, giving a valuable boost to local businesses.",
+    "prompt": "Which one of the following is an assumption required by the editorial's argument?",
+    "choices": {
+      "A": "Fans attending games at a downtown stadium would spend money at businesses near the stadium.",
+      "B": "A stadium built in the suburbs would not boost the businesses near it as much as a downtown stadium would boost downtown businesses.",
+      "C": "Downtown businesses are currently struggling more than suburban businesses are.",
+      "D": "The stadium will attract large crowds to every single game it hosts.",
+      "E": "Boosting local businesses is the single most important factor in choosing where to build a stadium."
+    },
+    "answer": "B",
+    "explanation": "The editorial recommends downtown OVER the suburbs on the strength of a benefit to nearby businesses. Negate (B): a suburban stadium would boost its neighboring businesses just as much. Then the business-boost gives no reason to prefer downtown, and the argument collapses. So (B) is required -- the argument assumes the benefit isn't matched in the suburbs.",
+    "traps": {
+      "A": "This restates a premise (the boost comes from fan spending); it's given, not an assumption the argument needs supplied.",
+      "C": "The argument doesn't depend on downtown businesses being needier. Negate it -- they're not struggling more -- and a boost is still a boost; the argument survives.",
+      "D": "'Every single game' and 'large crowds' are far stronger than the argument needs; some boost suffices. Negating it doesn't sink the argument.",
+      "E": "The argument needs the boost to be a relevant reason, not the single most important factor. This overstates what's required."
+    },
+    "takeaway": "When an argument recommends X over Y because X has a benefit, it assumes Y wouldn't deliver a comparable benefit. Test that comparison -- it's usually the necessary assumption.",
+    "tags": [
+      "necessary-assumption",
+      "comparison",
+      "negation-test"
+    ],
+    "trapTags": {
+      "A": "premise-restate",
+      "C": "out-of-scope",
+      "D": "too-strong",
+      "E": "too-strong"
+    }
   }
 ]

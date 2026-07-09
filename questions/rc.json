@@ -232,5 +232,239 @@
         }
       }
     ]
+  },
+  {
+    "id": "rc-p3",
+    "section": "RC",
+    "difficulty": 5,
+    "title": "The Bacterial Theory of Ulcers",
+    "passage": "For most of the twentieth century, physicians attributed peptic ulcers to stress and an excess of stomach acid. Treatments aimed at neutralizing or suppressing acid could ease the symptoms, but ulcers frequently recurred, and a genuine cure remained elusive. The underlying assumption was that the stomach, bathed in corrosive acid, was essentially sterile: no microbe, it was thought, could survive there.\n\nIn 1982 two Australian researchers, Robin Warren and Barry Marshall, proposed a radical alternative. They argued that a spiral-shaped bacterium, later named Helicobacter pylori, colonizes the stomach lining and is responsible for most peptic ulcers. The claim met deep skepticism, colliding directly with the settled belief that bacteria could not live in so acidic an environment. Compounding the difficulty, Marshall was unable to reproduce the infection in animal models, leaving him without the kind of evidence the field expected.\n\nFrustrated, Marshall took an extraordinary step: he deliberately drank a culture of the bacterium. Within days he developed acute gastritis, the inflammation that precedes ulcers, and biopsies confirmed the bacterium had colonized his stomach; a course of antibiotics then cleared both the infection and the symptoms. Over the following decade, controlled clinical trials established that antibiotics could cure ulcers that had resisted years of acid-suppressing therapy, and the treatment of the disease was transformed. In 2005 Warren and Marshall received the Nobel Prize. Historians of medicine, however, caution against reading the episode as a simple tale of lone genius overturning dogma. Marshall's self-experiment was dramatic, but by itself it proved little; what ultimately secured the theory was the slow accumulation of controlled evidence that met the standards the discipline demanded.",
+    "questions": [
+      {
+        "id": "rc-p3-q1",
+        "type": "Main Point",
+        "prompt": "Which one of the following most accurately expresses the main point of the passage?",
+        "choices": {
+          "A": "Self-experimentation is the most reliable method available for establishing new medical claims.",
+          "B": "The recognition that H. pylori causes most peptic ulcers overturned a long-standing theory, but it gained acceptance only as controlled evidence accumulated to meet the field's standards.",
+          "C": "Barry Marshall's decision to infect himself single-handedly proved that bacteria cause peptic ulcers.",
+          "D": "For most of the twentieth century, physicians wrongly attributed peptic ulcers to stress and excess stomach acid.",
+          "E": "Antibiotics are now the only accepted treatment for every kind of stomach ailment."
+        },
+        "answer": "B",
+        "explanation": "The passage traces the bacterial theory from radical proposal through skepticism, a dramatic self-experiment, and finally the controlled trials that secured it -- closing with the historians' point that accumulated evidence, not the self-experiment alone, won acceptance. (B) captures that whole arc.",
+        "traps": {
+          "A": "Overgeneralizes wildly. The passage's closing point is the opposite -- the self-experiment 'by itself proved little.'",
+          "C": "The passage explicitly denies this: the self-experiment was dramatic but proved little on its own; controlled trials did the real work.",
+          "D": "A true background detail from paragraph one, not the point the whole passage builds toward.",
+          "E": "Not stated and far too sweeping; the passage discusses ulcers, not all stomach ailments."
+        },
+        "takeaway": "Main Point must span the whole passage. Reject choices that grab one paragraph, overstate ('only,' 'every'), or contradict the author's closing qualification.",
+        "trapTags": {
+          "A": "too-strong",
+          "C": "half-right",
+          "D": "premise-restate",
+          "E": "too-strong"
+        }
+      },
+      {
+        "id": "rc-p3-q2",
+        "type": "Inference",
+        "prompt": "The passage suggests that the initial skepticism toward Warren and Marshall's proposal stemmed primarily from:",
+        "choices": {
+          "A": "the widely held belief that no bacterium could survive in the acidic environment of the stomach",
+          "B": "the fact that Warren and Marshall were researchers rather than practicing physicians",
+          "C": "the absence of any antibiotic capable of clearing the bacterium at the time",
+          "D": "the medical establishment's financial stake in acid-suppressing medications",
+          "E": "the failure of controlled clinical trials to confirm the bacterial theory"
+        },
+        "answer": "A",
+        "explanation": "Paragraph two states the proposal met skepticism 'colliding directly with the settled belief that bacteria could not live in so acidic an environment.' That prevailing belief is the named source of the skepticism -- exactly (A).",
+        "traps": {
+          "B": "The passage never suggests their professional status drove the doubt; the conflict was with the belief about stomach acid.",
+          "C": "Antibiotics existed and later cured the ulcers; a lack of them isn't given as the reason for skepticism.",
+          "D": "The passage mentions no financial motive; this is invented.",
+          "E": "Reverses the timeline -- controlled trials later CONFIRMED the theory. They couldn't be the source of initial skepticism."
+        },
+        "takeaway": "Inference-about-cause questions reward the reason the passage actually names. Watch for choices that invent motives or reverse the sequence of events.",
+        "trapTags": {
+          "B": "out-of-scope",
+          "C": "real-but-elsewhere",
+          "D": "out-of-scope",
+          "E": "reversed"
+        }
+      },
+      {
+        "id": "rc-p3-q3",
+        "type": "Function",
+        "prompt": "The author describes Marshall's decision to drink a culture of the bacterium primarily in order to:",
+        "choices": {
+          "A": "illustrate the lengths to which he went to provide direct evidence of causation after animal models had failed",
+          "B": "argue that self-experimentation should become a routine part of medical research",
+          "C": "prove conclusively that H. pylori is the sole cause of every peptic ulcer",
+          "D": "cast doubt on the reliability of the bacterial theory of ulcers",
+          "E": "explain why animal models are generally preferred in medical research"
+        },
+        "answer": "A",
+        "explanation": "The self-experiment appears right after the passage notes Marshall couldn't infect animal models. It's presented as his extraordinary attempt to supply direct human evidence of causation. Its function is to illustrate that push for evidence.",
+        "traps": {
+          "B": "The passage draws no general recommendation about research methods from the episode.",
+          "C": "The passage says the act 'by itself proved little,' so it isn't offered as conclusive proof, and 'sole cause of every ulcer' overstates the claim.",
+          "D": "The self-experiment supports, rather than undercuts, the bacterial theory.",
+          "E": "Animal models are mentioned only to explain why Marshall turned to himself, not to make a general point about their being preferred."
+        },
+        "takeaway": "Function questions: read the sentences around the detail. Here the failed animal models set up the self-experiment as a bid for direct evidence -- that's its job.",
+        "trapTags": {
+          "B": "out-of-scope",
+          "C": "too-strong",
+          "D": "opposite",
+          "E": "out-of-scope"
+        }
+      },
+      {
+        "id": "rc-p3-q4",
+        "type": "Inference",
+        "prompt": "It can most reasonably be inferred that the author would agree with which one of the following statements about the acceptance of the bacterial theory of ulcers?",
+        "choices": {
+          "A": "Its acceptance ultimately rested on accumulated controlled evidence rather than on the drama of a single experiment.",
+          "B": "It demonstrates that the medical establishment will always suppress genuinely revolutionary ideas.",
+          "C": "It shows that a single striking piece of anecdotal evidence is sufficient to overturn an established theory.",
+          "D": "It would have come much sooner if Marshall had published his findings more widely.",
+          "E": "It confirms that lone geniuses working against consensus are the primary engine of scientific progress."
+        },
+        "answer": "A",
+        "explanation": "The final sentences stress that the self-experiment proved little alone and that 'the slow accumulation of controlled evidence' is what secured the theory. So the author would endorse (A): evidence, not drama, drove acceptance.",
+        "traps": {
+          "B": "'Always suppress' is far stronger than anything the passage supports; the theory was, after all, eventually accepted.",
+          "C": "Directly opposed to the author's point that anecdotal drama proved little and controlled evidence was needed.",
+          "D": "The passage says nothing about publication timing as a factor.",
+          "E": "The historians explicitly caution against the lone-genius reading, so the author would reject this."
+        },
+        "takeaway": "When a passage closes by reframing a story, that reframing is the author's view. Here 'evidence over drama' rules out the lone-genius and anecdote-is-enough traps.",
+        "trapTags": {
+          "B": "too-strong",
+          "C": "opposite",
+          "D": "out-of-scope",
+          "E": "reversed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rc-p4",
+    "section": "RC",
+    "difficulty": 4,
+    "title": "Cleaning the Old Masters",
+    "passage": "When a museum unveils a newly cleaned Old Master painting, the public often reacts with surprise: colors long muted beneath layers of yellowed varnish suddenly appear vivid and sharp. The conservators who undertake such cleaning argue that they are recovering the work as the artist actually painted it, stripping away only the discolored varnish and grime that centuries have deposited on the surface.\n\nCritics, however, contend that cleaning can go too far. One objection is essentially historical: centuries of gradual change -- darkened varnish, softened contrasts, a mellow overall tone -- have themselves become part of how a work has been seen and valued by generations of viewers. To strip all of this away, on this view, is to impose a distinctly modern taste for brightness on an object whose appearance has its own long history. A subtler objection is technical. Conservators, the critics argue, cannot always tell the artist's original surface from later material: a thin glaze the painter applied to soften a transition between two areas may, to modern eyes, resemble discolored varnish -- and be removed along with it, quietly erasing part of the artist's own work.\n\nDefenders of cleaning reply on both fronts. Modern analytic techniques -- cross-section sampling, ultraviolet imaging, pigment analysis -- allow conservators to identify original layers with growing precision, they argue, so the risk of removing the artist's own glazes has diminished. And leaving a painting entombed under darkened varnish, they add, is itself a choice with consequences, not a neutral act of preservation. Yet the debate finally turns on a question that no instrument can settle: what is the 'true' state of a work that has existed, and changed, for four hundred years?",
+    "questions": [
+      {
+        "id": "rc-p4-q1",
+        "type": "Main Point",
+        "prompt": "Which one of the following most accurately states the main point of the passage?",
+        "choices": {
+          "A": "The controversy over cleaning Old Master paintings ultimately rests on an unresolved question about what the 'true' state of a centuries-old work really is.",
+          "B": "Museums should stop cleaning Old Master paintings, because the process inevitably destroys original material.",
+          "C": "Modern analytic techniques have effectively resolved the debate over whether Old Master paintings should be cleaned.",
+          "D": "Newly cleaned paintings often reveal vivid colors that had been hidden beneath layers of yellowed varnish.",
+          "E": "Art conservation has become a far more scientific discipline over the course of the past century."
+        },
+        "answer": "A",
+        "explanation": "The passage lays out the case for cleaning, two objections against it, the defenders' replies, and then states that the debate 'finally turns on a question that no instrument can settle.' (A) captures that structure and its conclusion: the dispute rests on an unsettled question about a work's true state.",
+        "traps": {
+          "B": "Too strong and one-sided; the passage presents cleaning's defenders seriously and never concludes museums should stop, nor that damage is inevitable.",
+          "C": "The passage says the opposite -- the debate turns on a question 'no instrument can settle,' so science hasn't resolved it.",
+          "D": "A vivid detail from the opening, not the overall point the passage builds toward.",
+          "E": "True in passing, but a side observation, not the passage's central claim about the debate."
+        },
+        "takeaway": "For a balanced 'debate' passage, the main point is usually the unresolved tension itself. Reject one-sided answers and single details presented as the thesis.",
+        "trapTags": {
+          "B": "too-strong",
+          "C": "half-right",
+          "D": "premise-restate",
+          "E": "out-of-scope"
+        }
+      },
+      {
+        "id": "rc-p4-q2",
+        "type": "Inference",
+        "prompt": "According to the passage, the 'subtler objection' to cleaning holds that:",
+        "choices": {
+          "A": "conservators may mistake an artist's original glaze for discolored varnish and remove it",
+          "B": "cleaning a painting is considerably more expensive than leaving it untouched",
+          "C": "modern viewers' preference for brightness is more authentic than the artist's own intentions",
+          "D": "the darkened varnish has itself become part of how the work is experienced",
+          "E": "ultraviolet imaging can damage the most delicate layers of paint"
+        },
+        "answer": "A",
+        "explanation": "The passage identifies the 'subtler objection' as technical: conservators 'cannot always tell the artist's original surface from later material,' so an original glaze may be mistaken for varnish and removed. That is precisely (A).",
+        "traps": {
+          "B": "Cost is never raised in the passage; this is invented.",
+          "C": "Backwards -- the historical objection warns AGAINST imposing modern brightness; no one claims it is more authentic.",
+          "D": "That is the OTHER (historical) objection, not the subtler technical one the question asks about.",
+          "E": "The passage presents UV imaging as a tool that helps identify original layers, not as a source of damage."
+        },
+        "takeaway": "When a passage labels distinct objections, keep them straight. The trap here swaps the 'subtler technical' objection for the separate 'historical' one.",
+        "trapTags": {
+          "B": "out-of-scope",
+          "C": "reversed",
+          "D": "real-but-elsewhere",
+          "E": "out-of-scope"
+        }
+      },
+      {
+        "id": "rc-p4-q3",
+        "type": "Function",
+        "prompt": "The author concludes with a question ('what is the true state...') primarily in order to:",
+        "choices": {
+          "A": "emphasize that the heart of the debate is a matter of judgment that scientific methods cannot by themselves resolve",
+          "B": "suggest that the debate has now been settled decisively in favor of cleaning",
+          "C": "propose a new technique for dating the layers of varnish on a painting",
+          "D": "argue that a painting should never be altered from its current state in any way",
+          "E": "fault conservators for relying too heavily on modern analytic techniques"
+        },
+        "answer": "A",
+        "explanation": "The closing question follows the observation that the debate 'turns on a question that no instrument can settle.' Posing it drives home that the core issue is a judgment about a work's true state -- something science alone cannot decide. That's its rhetorical function.",
+        "traps": {
+          "B": "The open-ended question signals the debate is unresolved, the opposite of settled in favor of cleaning.",
+          "C": "No new technique is proposed; the sentence raises a conceptual question, not a method.",
+          "D": "The author stays neutral and never argues that paintings must never be altered.",
+          "E": "The passage credits analytic techniques as genuinely useful; the closing question doesn't fault their use."
+        },
+        "takeaway": "A closing rhetorical question usually underscores the author's framing. Here it marks the debate as a value judgment beyond what instruments can decide.",
+        "trapTags": {
+          "B": "opposite",
+          "C": "out-of-scope",
+          "D": "too-strong",
+          "E": "real-but-elsewhere"
+        }
+      },
+      {
+        "id": "rc-p4-q4",
+        "type": "Attitude",
+        "prompt": "The author's stance toward the two sides of the cleaning debate is best described as:",
+        "choices": {
+          "A": "presenting the arguments on both sides while declining to endorse either as decisive",
+          "B": "firmly endorsing the conservators who favor cleaning",
+          "C": "dismissing the case for cleaning as essentially without merit",
+          "D": "indifference toward the outcome of what is a purely technical dispute",
+          "E": "concluding that the critics of cleaning have clearly prevailed"
+        },
+        "answer": "A",
+        "explanation": "The author gives the case for cleaning, two serious objections, and the defenders' replies, then ends on an unresolved question rather than a verdict. That even-handed presentation without a final endorsement is exactly (A).",
+        "traps": {
+          "B": "The author never sides firmly with the conservators; the critics' objections are presented as serious.",
+          "C": "The case for cleaning is presented respectfully and given able defenders, not dismissed.",
+          "D": "The closing question shows the author finds the issue meaningful, not a matter of indifference; and the passage stresses it is NOT purely technical.",
+          "E": "The author reaches no verdict for either side, so 'the critics have prevailed' misreads the neutral stance."
+        },
+        "takeaway": "Attitude answers for a balanced author are usually the moderate, two-sided option. Extremes ('firmly,' 'dismissing,' 'clearly prevailed') and 'indifference' are the standard traps.",
+        "trapTags": {
+          "B": "too-strong",
+          "C": "too-strong",
+          "D": "out-of-scope",
+          "E": "reversed"
+        }
+      }
+    ]
   }
 ]
