@@ -1,7 +1,28 @@
 {
   "version": 1,
   "goal": "LSAT 170+",
-  "format": "Mixed practice, LR-heavy, difficulty 4-5",
-  "createdAt": "2026-07-08",
-  "attempts": []
+  "attempts": [
+    {
+      "cardId": "lr-0012",
+      "section": "LR",
+      "type": "Main Conclusion",
+      "chosen": "E",
+      "correct": true,
+      "reasoning": "It claims that there are zoos that help species from extinction and educate people about wildlife and its benefit outweighs the ethical costs of unethical zoos.",
+      "ts": "2026-07-09T04:50:37.059Z",
+      "seconds": 192,
+      "trapTag": null
+    },
+    {
+      "cardId": "rc-p2-q2",
+      "section": "RC",
+      "type": "Inference",
+      "chosen": "B",
+      "correct": true,
+      "reasoning": "Ostrom thinks Hardin's idea is not \"an iron law\" but one possible outcome in a certain context.",
+      "ts": "2026-07-09T05:02:36.416Z",
+      "seconds": 319,
+      "trapTag": null
+    }
+  ]
 }
