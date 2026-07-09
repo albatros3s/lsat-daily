@@ -88,13 +88,39 @@
   .sync{font-size:.8rem; color:var(--muted)}
   .dot{display:inline-block; width:8px; height:8px; border-radius:99px; margin-right:6px; vertical-align:middle}
   .dot.on{background:var(--good)} .dot.off{background:var(--muted)} .dot.err{background:var(--bad)}
+
+  /* review / question log */
+  .chips{display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 14px}
+  .chip{background:var(--panel2); border:1px solid var(--line); color:var(--muted);
+    border-radius:999px; padding:6px 12px; font-size:.82rem; cursor:pointer}
+  .chip.active{background:var(--chip); color:var(--accent2); border-color:var(--accent)}
+  .qrow{display:flex; align-items:center; gap:12px; padding:12px 6px; border-bottom:1px solid var(--line); cursor:pointer}
+  .qrow:active{background:var(--panel2)}
+  .qbadge{width:28px; height:28px; min-width:28px; border-radius:8px; display:flex;
+    align-items:center; justify-content:center; font-size:.95rem; font-weight:700}
+  .qbadge.correct{background:rgba(47,191,113,.18); color:var(--good)}
+  .qbadge.wrong{background:rgba(229,84,75,.18); color:var(--bad)}
+  .qbadge.unseen{background:var(--panel2); color:var(--muted)}
+  .qrow .meta{flex:1; min-width:0}
+  .qrow .meta .t{font-weight:600; font-size:.92rem}
+  .qrow .meta .s{color:var(--muted); font-size:.78rem; font-weight:400}
+  .qrow.lucky{background:rgba(224,160,48,.09)}
+  .star{font-size:1.15rem; color:var(--muted); padding:4px 6px}
+  .star.on{color:var(--warn)}
+  .conf.sel[data-c="sure"]{border-color:var(--good); color:var(--good)}
+  .conf.sel[data-c="unsure"]{border-color:var(--warn); color:var(--warn)}
+  .histitem{border:1px solid var(--line); border-radius:10px; padding:10px 12px; margin:8px 0; background:var(--panel2)}
+  .histitem.miss{border-left:3px solid var(--bad)}
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="brand">LSAT&nbsp;Daily <small>Target 170+ &middot; mixed, difficulty 4&ndash;5</small></div>
-  <button class="iconbtn" id="navSettings">⚙︎</button>
+  <div class="row" style="gap:8px">
+    <button class="iconbtn" id="navReview">📋 Log</button>
+    <button class="iconbtn" id="navSettings">⚙︎</button>
+  </div>
 </header>
 
 <!-- SETUP -->
@@ -205,6 +231,11 @@
   <div id="reasonBox">
     <label class="fld">Your reasoning (required) — what makes your pick right, and which trap tempted you?</label>
     <textarea id="reasonInput" placeholder="Write your reasoning here before revealing…"></textarea>
+    <label class="fld">How confident are you?</label>
+    <div class="row" id="confBox">
+      <button class="btn secondary conf" data-c="sure" type="button">Sure</button>
+      <button class="btn secondary conf" data-c="unsure" type="button">Unsure</button>
+    </div>
     <div class="row" style="margin-top:12px">
       <button class="btn" id="revealBtn" disabled>Reveal answer</button>
     </div>
@@ -230,6 +261,28 @@
     <div class="row" style="margin-top:14px">
       <button class="btn" id="homeBtn">Back to dashboard</button>
     </div>
+  </div>
+</section>
+
+<!-- REVIEW / QUESTION LOG -->
+<section id="view-review" class="hidden">
+  <div class="card">
+    <h2 style="margin-top:4px">Question log</h2>
+    <div class="chips" id="reviewChips"></div>
+    <div id="reviewList"></div>
+  </div>
+  <div class="row"><button class="btn secondary" id="review-back">Back to dashboard</button></div>
+</section>
+
+<!-- QUESTION DETAIL -->
+<section id="view-qdetail" class="hidden">
+  <div id="qdetailBody"></div>
+  <div class="row" style="margin-top:14px">
+    <button class="btn" id="qd-redo">Redo this question</button>
+  </div>
+  <div class="row" style="margin-top:8px">
+    <button class="btn secondary small" id="qd-flag">☆ Flag</button>
+    <button class="btn secondary small" id="qd-back">Back to log</button>
   </div>
 </section>
 
@@ -278,14 +331,14 @@ const PROGRESS_PATH = "progress/progress.json";
 
 /* ---------------- state ---------------- */
 let CARDS = [];            // flattened answerable cards
-let PROGRESS = { version:1, goal:"LSAT 170+", attempts:[] };
+let PROGRESS = { version:1, goal:"LSAT 170+", attempts:[], flags:[] };
 let session = null;        // {queue, idx, results}
 
 /* ---------------- utils ---------------- */
 const $ = s => document.querySelector(s);
 const el = (tag, cls, html) => { const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; };
 function esc(s){ return String(s).replace(/[&<>]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
-function show(id){ ["setup","home","session","summary","settings"].forEach(v=>$("#view-"+v).classList.add("hidden")); $("#view-"+id).classList.remove("hidden"); window.scrollTo(0,0); }
+function show(id){ ["setup","home","session","summary","settings","review","qdetail"].forEach(v=>$("#view-"+v).classList.add("hidden")); $("#view-"+id).classList.remove("hidden"); window.scrollTo(0,0); }
 let toastT;
 function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.remove("hidden"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.add("hidden"), 3200); }
 function b64encode(str){ return btoa(unescape(encodeURIComponent(str))); }
@@ -346,7 +399,8 @@ function mergeProgress(a,b){
   const seen=new Set(), out=[];
   [...(a.attempts||[]),...(b.attempts||[])].forEach(x=>{ const k=attemptKey(x); if(!seen.has(k)){seen.add(k); out.push(x);} });
   out.sort((x,y)=>x.ts<y.ts?-1:1);
-  return { version:1, goal:a.goal||b.goal||"LSAT 170+", attempts:out };
+  const flags=Array.from(new Set([...(a.flags||[]),...(b.flags||[])]));
+  return { version:1, goal:a.goal||b.goal||"LSAT 170+", attempts:out, flags };
 }
 function saveLocal(){ localStorage.setItem(LS.progress, JSON.stringify(PROGRESS)); }
 async function pullRemote(){
@@ -453,6 +507,88 @@ function predictedBand(){
   return {band:"below ~144"};
 }
 
+/* ---------------- review / question log ---------------- */
+function cardById(id){ return CARDS.find(c=>c.cardId===id); }
+function attemptsFor(id){ return (PROGRESS.attempts||[]).filter(a=>a.cardId===id); }
+function ensureFlags(){ if(!Array.isArray(PROGRESS.flags)) PROGRESS.flags=[]; }
+function isFlagged(id){ return (PROGRESS.flags||[]).indexOf(id)>=0; }
+function toggleFlag(id){ ensureFlags(); const i=PROGRESS.flags.indexOf(id);
+  if(i>=0) PROGRESS.flags.splice(i,1); else PROGRESS.flags.push(id); saveLocal(); }
+function cardStatus(id){
+  const at=attemptsFor(id);
+  if(!at.length) return { state:"unseen", n:0 };
+  const last=at[at.length-1];
+  return { state:last.correct?"correct":"wrong", n:at.length, last,
+    everWrong:at.some(a=>!a.correct), lucky: last.correct && last.confidence==="unsure" };
+}
+let reviewFilter="all";
+function renderReview(){
+  const filters=[["all","All"],["wrong","Wrong"],["unseen","Unseen"],["flagged","Flagged ★"],["lucky","Right but unsure"]];
+  $("#reviewChips").innerHTML=filters.map(([k,l])=>`<span class="chip ${reviewFilter===k?'active':''}" data-f="${k}">${esc(l)}</span>`).join("");
+  $("#reviewChips").querySelectorAll(".chip").forEach(ch=>ch.onclick=()=>{ reviewFilter=ch.dataset.f; renderReview(); });
+  const rows=CARDS.filter(c=>{
+    const st=cardStatus(c.cardId);
+    if(reviewFilter==="wrong") return st.everWrong;
+    if(reviewFilter==="unseen") return st.state==="unseen";
+    if(reviewFilter==="flagged") return isFlagged(c.cardId);
+    if(reviewFilter==="lucky") return st.lucky;
+    return true;
+  }).map(c=>{
+    const st=cardStatus(c.cardId);
+    const badge = st.state==="unseen" ? '<span class="qbadge unseen">•</span>'
+      : st.state==="correct" ? '<span class="qbadge correct">✓</span>'
+      : '<span class="qbadge wrong">✗</span>';
+    const sub = st.state==="unseen" ? "Not attempted"
+      : (st.n>1?st.n+" attempts · ":"") + "last " + (st.state==="correct"?"correct":"wrong")
+        + (st.lucky?" · ⚠ was unsure":"");
+    return `<div class="qrow ${st.lucky?'lucky':''}" data-id="${c.cardId}">
+      ${badge}
+      <div class="meta"><div class="t">${esc(c.type)} <span class="s">· ${esc(c.section)} · diff ${c.difficulty||'—'}</span></div>
+      <div class="s">${esc(sub)}</div></div>
+      <span class="star ${isFlagged(c.cardId)?'on':''}" data-star="${c.cardId}">${isFlagged(c.cardId)?'★':'☆'}</span>
+    </div>`;
+  }).join("");
+  $("#reviewList").innerHTML = rows || '<div class="muted" style="padding:14px 4px">No questions match this filter.</div>';
+  $("#reviewList").querySelectorAll(".qrow").forEach(r=>r.onclick=(e)=>{
+    const star=e.target.getAttribute("data-star");
+    if(star){ toggleFlag(star); renderReview(); return; }
+    openDetail(r.getAttribute("data-id"));
+  });
+}
+let detailId=null;
+function openDetail(id){ detailId=id; renderDetail(id); show("qdetail"); }
+function renderDetail(id){
+  const c=cardById(id); const body=$("#qdetailBody");
+  if(!c){ body.innerHTML="Question not found."; return; }
+  const at=attemptsFor(id);
+  let h=`<div class="qmeta"><span class="pill">${esc(c.section)}</span><span class="pill">${esc(c.type)}</span><span class="pill">Diff ${c.difficulty||'—'}</span></div>`;
+  if(c.passageText) h+=`<details class="passwrap" open><summary>Passage: ${esc(c.passageTitle||'')}</summary><div class="passage">${esc(c.passageText)}</div></details>`;
+  if(c.stimulus) h+=`<div class="stim">${esc(c.stimulus)}</div>`;
+  h+=`<div class="prompt">${esc(c.prompt)}</div>`;
+  h+=Object.keys(c.choices).map(l=>{
+    const cls = l===c.answer ? "choice correct disabled" : "choice disabled";
+    return `<div class="${cls}"><span class="lt">${l}</span><span>${esc(c.choices[l])}</span></div>`;
+  }).join("");
+  if(at.length){
+    h+='<h4 style="color:var(--muted);margin:16px 0 6px;text-transform:uppercase;font-size:.8rem;letter-spacing:.5px">Your attempts</h4>';
+    h+=at.map(a=>`<div class="histitem ${a.correct?'':'miss'}">
+      <div><b>${a.correct?'✓':'✗'} Chose ${esc(a.chosen)}</b>${a.confidence?' · <span class="muted">'+esc(a.confidence)+'</span>':''}${a.seconds!=null?' · '+fmtTime(a.seconds):''}</div>
+      <div class="muted" style="font-size:.85rem;margin-top:4px">${esc(a.reasoning||'(no reasoning recorded)')}</div>
+    </div>`).join("");
+  } else {
+    h+='<div class="muted" style="margin:14px 0">You haven\'t attempted this question yet.</div>';
+  }
+  h+=`<div class="explain"><b>Why ${c.answer} is right.</b> ${esc(c.explanation)}</div>`;
+  const traps=Object.keys(c.traps||{});
+  if(traps.length){ h+='<div class="traps"><h4>Why the other answers are wrong</h4>'
+    + traps.map(l=>`<div class="trap"><b>${l}.</b> ${esc(c.traps[l])}</div>`).join("") + '</div>'; }
+  if(c.takeaway) h+=`<div class="takeaway"><b>Takeaway.</b> ${esc(c.takeaway)}</div>`;
+  body.innerHTML=h;
+  $("#qd-flag").textContent = isFlagged(id) ? "★ Flagged" : "☆ Flag";
+}
+function redoCard(id){ const c=cardById(id); if(!c) return;
+  session={ queue:[c], idx:0, results:[], timerInt:null, fromReview:true }; show("session"); renderCard(); }
+
 /* ---------------- dashboard ---------------- */
 function renderHome(){
   const s=stats();
@@ -558,7 +694,7 @@ function startSession(){
   renderCard();
 }
 
-let curPick=null;
+let curPick=null, curConf=null;
 function renderCard(){
   const c=session.queue[session.idx];
   curPick=null;
@@ -594,6 +730,8 @@ function renderCard(){
   });
 
   session.revealed=false;
+  curConf=null;
+  document.querySelectorAll("#confBox .conf").forEach(x=>x.classList.remove("sel"));
   $("#reasonBox").classList.remove("hidden");
   $("#reasonInput").value="";
   $("#feedback").classList.add("hidden");
@@ -608,10 +746,17 @@ function renderCard(){
   window.scrollTo(0,0);
 }
 function updateReveal(){
-  const ok = curPick && $("#reasonInput").value.trim().length>=3;
+  const ok = curPick && curConf && $("#reasonInput").value.trim().length>=3;
   $("#revealBtn").disabled=!ok;
 }
 $("#reasonInput") && ($("#reasonInput").oninput=updateReveal);
+document.querySelectorAll("#confBox .conf").forEach(b=>b.onclick=()=>{
+  if(session && session.revealed) return;
+  curConf=b.dataset.c;
+  document.querySelectorAll("#confBox .conf").forEach(x=>x.classList.remove("sel"));
+  b.classList.add("sel");
+  updateReveal();
+});
 
 function reveal(){
   const c=session.queue[session.idx];
@@ -633,7 +778,7 @@ function reveal(){
   // record
   const rec={ cardId:c.cardId, section:c.section, type:c.type, chosen:curPick,
     correct, reasoning:$("#reasonInput").value.trim(), ts:new Date().toISOString(),
-    seconds:secs, trapTag: correct ? null : ((c.trapTags && c.trapTags[curPick]) || null) };
+    seconds:secs, confidence:curConf, trapTag: correct ? null : ((c.trapTags && c.trapTags[curPick]) || null) };
   PROGRESS.attempts.push(rec);
   session.results.push(rec);
   saveLocal();
@@ -646,6 +791,8 @@ function reveal(){
     "⏱ "+fmtTime(secs)+" · target "+fmtTime(TARGET_SEC)+(secs>TARGET_SEC?" — over pace (accuracy first for now)":" — on pace")));
   if(!correct && rec.trapTag && TRAP_LABELS[rec.trapTag])
     fb.appendChild(el("div","takeaway","<b>Trap type — "+esc(TRAP_LABELS[rec.trapTag].name)+".</b> "+esc(TRAP_LABELS[rec.trapTag].tip)));
+  if(correct && curConf==="unsure")
+    fb.appendChild(el("div","takeaway","<b>Right — but you weren't sure.</b> This lands in your log under “Right but unsure.” Lucky-ish answers are hidden weak spots; review it so it holds up under time pressure."));
   fb.appendChild(el("div","explain","<b>Why "+c.answer+" is right.</b> "+esc(c.explanation)));
   const traps=Object.keys(c.traps||{});
   if(traps.length){
@@ -668,6 +815,11 @@ function nextCard(){
 }
 async function endSession(){
   clearInterval(session.timerInt);
+  if(session.fromReview){ // single-question redo from the log: skip summary, return to log
+    saveLocal();
+    if(cfg.connected){ try{ await pushRemote(); }catch(e){} }
+    renderReview(); show("review"); return;
+  }
   const r=session.results;
   const n=r.length, c=r.filter(x=>x.correct).length;
   $("#sum-score").textContent=c+"/"+n;
@@ -708,6 +860,11 @@ async function saveSettings(){
 
 /* ---------------- wiring ---------------- */
 $("#navSettings").onclick=openSettings;
+$("#navReview").onclick=()=>{ renderReview(); show("review"); };
+$("#review-back").onclick=()=>{ renderHome(); show("home"); };
+$("#qd-redo").onclick=()=>{ if(detailId) redoCard(detailId); };
+$("#qd-flag").onclick=()=>{ if(detailId){ toggleFlag(detailId); renderDetail(detailId); } };
+$("#qd-back").onclick=()=>{ renderReview(); show("review"); };
 $("#startBtn").onclick=startSession;
 $("#revealBtn").onclick=reveal;
 $("#nextBtn").onclick=nextCard;
@@ -729,12 +886,13 @@ $("#set-sync").onclick=async ()=>{ $("#setStatus").textContent="Syncing…";
   try{ await pushRemote(); $("#setStatus").textContent="Synced ✓"; }catch(e){ $("#setStatus").textContent="Sync failed: "+e.message; } };
 $("#set-back").onclick=()=>{ renderHome(); show("home"); };
 $("#set-reset").onclick=()=>{ if(confirm("Clear local progress on this device? If connected, it will re-pull from GitHub.")){
-  PROGRESS={version:1,goal:"LSAT 170+",attempts:[]}; localStorage.removeItem(LS.progress); localStorage.removeItem(LS.sha);
+  PROGRESS={version:1,goal:"LSAT 170+",attempts:[],flags:[]}; localStorage.removeItem(LS.progress); localStorage.removeItem(LS.sha);
   toast("Local progress cleared."); openSettings(); } };
 
 /* ---------------- boot ---------------- */
 (async function boot(){
   try{ const p=localStorage.getItem(LS.progress); if(p) PROGRESS=JSON.parse(p); }catch(e){}
+  ensureFlags();
   try{ await loadBank(); }catch(e){ toast("Could not load question bank: "+e.message); }
   if(cfg.connected){ try{ await pullRemote(); }catch(e){ /* offline ok */ } }
   if(!localStorage.getItem(LS.setupDone) && !cfg.connected){ show("setup"); }
