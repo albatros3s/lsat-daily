@@ -23,6 +23,72 @@
       "ts": "2026-07-09T05:02:36.416Z",
       "seconds": 319,
       "trapTag": null
+    },
+    {
+      "cardId": "lr-0004",
+      "section": "LR",
+      "type": "Weaken",
+      "chosen": "A",
+      "correct": true,
+      "reasoning": "I think the answer is A because when i negates it it makes the argument stronger by showing the result is more likely from the calorie display.",
+      "ts": "2026-07-09T06:20:28.142Z",
+      "seconds": 237,
+      "trapTag": null
+    },
+    {
+      "cardId": "lr-0001",
+      "section": "LR",
+      "type": "Flaw",
+      "chosen": "A",
+      "correct": true,
+      "reasoning": "The columnist is trying use the absence of evident to claim the argument is false.",
+      "ts": "2026-07-09T06:23:52.779Z",
+      "seconds": 94,
+      "trapTag": null
+    },
+    {
+      "cardId": "lr-0012",
+      "section": "LR",
+      "type": "Main Conclusion",
+      "chosen": "E",
+      "correct": true,
+      "reasoning": "Same as E",
+      "ts": "2026-07-09T06:24:55.571Z",
+      "seconds": 61,
+      "trapTag": null
+    },
+    {
+      "cardId": "rc-p1-q3",
+      "section": "RC",
+      "type": "Function",
+      "chosen": "B",
+      "correct": true,
+      "reasoning": "Same as B",
+      "ts": "2026-07-09T06:26:54.525Z",
+      "seconds": 114,
+      "trapTag": null
+    },
+    {
+      "cardId": "lr-0007",
+      "section": "LR",
+      "type": "Parallel Flaw",
+      "chosen": "A",
+      "correct": true,
+      "reasoning": "A using must",
+      "ts": "2026-07-09T06:29:01.337Z",
+      "seconds": 91,
+      "trapTag": null
+    },
+    {
+      "cardId": "rc-p1-q1",
+      "section": "RC",
+      "type": "Main Point",
+      "chosen": "C",
+      "correct": false,
+      "reasoning": "Same as C",
+      "ts": "2026-07-09T06:32:07.291Z",
+      "seconds": 135,
+      "trapTag": "half-right"
     }
   ]
 }
