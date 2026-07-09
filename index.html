@@ -700,8 +700,9 @@ async function saveSettings(){
   localStorage.setItem(LS.repo, $("#set-repo").value.trim());
   const tk=$("#set-token").value.trim(); if(tk) localStorage.setItem(LS.token, tk);
   localStorage.removeItem(LS.sha);
-  $("#setStatus").textContent="Saved. Checking connection…";
-  try{ await pullRemote(); $("#setStatus").textContent="Connected and synced ✓"; }
+  $("#setStatus").textContent="Saved. Syncing…";
+  // two-way sync: upload anything on this device AND pull remote (merge, no loss)
+  try{ await pushRemote(); $("#setStatus").textContent="Connected and synced ✓"; renderHome(); }
   catch(e){ $("#setStatus").textContent="Saved, but sync failed: "+e.message; }
 }
 
@@ -718,7 +719,7 @@ $("#saveSetup").onclick=async ()=>{
   localStorage.setItem(LS.token,$("#in-token").value.trim());
   localStorage.setItem(LS.setupDone,"1");
   $("#setupMsg").textContent="Connecting…";
-  try{ await pullRemote(); toast("Connected to GitHub ✓"); }
+  try{ await pushRemote(); toast("Connected to GitHub ✓"); }
   catch(e){ toast("Saved on device; GitHub check failed: "+e.message); }
   renderHome(); show("home");
 };
