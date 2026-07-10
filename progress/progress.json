@@ -89,6 +89,43 @@
       "ts": "2026-07-09T06:32:07.291Z",
       "seconds": 135,
       "trapTag": "half-right"
+    },
+    {
+      "cardId": "lr-0003",
+      "section": "LR",
+      "type": "Strengthen",
+      "chosen": "C",
+      "correct": true,
+      "reasoning": "C. It strengthens the claim that there was a centralized authority.",
+      "ts": "2026-07-10T07:05:35.163Z",
+      "seconds": 119,
+      "confidence": "sure",
+      "trapTag": null
+    },
+    {
+      "cardId": "lr-0002",
+      "section": "LR",
+      "type": "Necessary Assumption",
+      "chosen": "C",
+      "correct": true,
+      "reasoning": "This is what the writer is trying to say",
+      "ts": "2026-07-10T07:10:59.072Z",
+      "seconds": 258,
+      "confidence": "sure",
+      "trapTag": null
+    },
+    {
+      "cardId": "lr-0011",
+      "section": "LR",
+      "type": "Resolve the Paradox",
+      "chosen": "B",
+      "correct": true,
+      "reasoning": "This options explains the discrepancy.",
+      "ts": "2026-07-10T07:12:58.350Z",
+      "seconds": 85,
+      "confidence": "sure",
+      "trapTag": null
     }
-  ]
+  ],
+  "flags": []
 }
