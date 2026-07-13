@@ -125,6 +125,66 @@
       "seconds": 85,
       "confidence": "sure",
       "trapTag": null
+    },
+    {
+      "cardId": "lr-0018",
+      "section": "LR",
+      "type": "Principle",
+      "chosen": "D",
+      "correct": false,
+      "reasoning": "D like the answer",
+      "ts": "2026-07-13T06:31:41.343Z",
+      "seconds": 83,
+      "confidence": "sure",
+      "trapTag": "reversed"
+    },
+    {
+      "cardId": "rc-p2-q1",
+      "section": "RC",
+      "type": "Main Point",
+      "chosen": "C",
+      "correct": true,
+      "reasoning": "C. Like the answer",
+      "ts": "2026-07-13T06:35:24.465Z",
+      "seconds": 195,
+      "confidence": "sure",
+      "trapTag": null
+    },
+    {
+      "cardId": "lr-0020",
+      "section": "LR",
+      "type": "Method of Reasoning",
+      "chosen": "C",
+      "correct": false,
+      "reasoning": "C is the answer",
+      "ts": "2026-07-13T06:37:28.218Z",
+      "seconds": 120,
+      "confidence": "sure",
+      "trapTag": "out-of-scope"
+    },
+    {
+      "cardId": "lr-0005",
+      "section": "LR",
+      "type": "Sufficient Assumption",
+      "chosen": "E",
+      "correct": false,
+      "reasoning": "E checking using negation",
+      "ts": "2026-07-13T06:40:08.326Z",
+      "seconds": 103,
+      "confidence": "sure",
+      "trapTag": "too-strong"
+    },
+    {
+      "cardId": "rc-p4-q1",
+      "section": "RC",
+      "type": "Main Point",
+      "chosen": "A",
+      "correct": true,
+      "reasoning": "A is the main point",
+      "ts": "2026-07-13T06:45:15.628Z",
+      "seconds": 228,
+      "confidence": "sure",
+      "trapTag": null
     }
   ],
   "flags": []
