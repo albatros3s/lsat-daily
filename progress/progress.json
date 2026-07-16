@@ -185,6 +185,54 @@
       "seconds": 228,
       "confidence": "sure",
       "trapTag": null
+    },
+    {
+      "cardId": "lr-0016",
+      "section": "LR",
+      "type": "Sufficient Assumption",
+      "chosen": "A",
+      "correct": true,
+      "reasoning": "A. The policy for the carbon tax can be accepted with the condition that it is fair",
+      "ts": "2026-07-16T05:43:05.640Z",
+      "seconds": 87,
+      "confidence": "sure",
+      "trapTag": null
+    },
+    {
+      "cardId": "lr-0008",
+      "section": "LR",
+      "type": "Principle",
+      "chosen": "A",
+      "correct": true,
+      "reasoning": "A because no better alternative no call out for imprudent",
+      "ts": "2026-07-16T05:46:15.733Z",
+      "seconds": 158,
+      "confidence": "sure",
+      "trapTag": null
+    },
+    {
+      "cardId": "lr-0017",
+      "section": "LR",
+      "type": "Must Be True",
+      "chosen": "A",
+      "correct": true,
+      "reasoning": "A because some of p are v then some v should be p",
+      "ts": "2026-07-16T05:48:28.834Z",
+      "seconds": 110,
+      "confidence": "sure",
+      "trapTag": null
+    },
+    {
+      "cardId": "rc-p4-q4",
+      "section": "RC",
+      "type": "Attitude",
+      "chosen": "A",
+      "correct": true,
+      "reasoning": "A cuz author presents both args but does not lean toward one",
+      "ts": "2026-07-16T05:52:03.146Z",
+      "seconds": 188,
+      "confidence": "sure",
+      "trapTag": null
     }
   ],
   "flags": []
